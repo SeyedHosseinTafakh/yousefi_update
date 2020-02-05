@@ -1,0 +1,88 @@
+<!doctype html>
+<html dir="rtl" lang="fa-IR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e9262c" />
+    <link rel='stylesheet' id='style-css'  href='style.css' type='text/css' media='all' />
+    <title>table</title>
+</head>
+<body>
+<div class="table-cont">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"><span>ردیف</span></th>
+          <th scope="col"><span>جمع ریالی</span></th>
+          <th scope="col"><span>جمع ارزی</span></th>
+          <th scope="col"><span>مبلغ ورق</span></th>
+          <th scope="col"><span>جمع دلاری ساخت و پوشش</span></th>
+          <th scope="col"><span>ضخامت</span></th>
+          <th scope="col"><span>متراژ</span></th>
+          <th scope="col"><span>تناژ</span></th>
+          <th scope="col"><span>تاریخ تحویل</span></th>
+          <th scope="col"><span>نوع کالای تحویلی</span></th>
+          <th scope="col"><span>شماره حواله انبار</span></th>
+          <th scope="col"><span>شماره تقاضا</span></th>
+          <th scope="col"><span>شماره قلم</span></th>
+          <th scope="col"><span>نرخ تسعیر بانک مرکزی</span></th>
+          <th scope="col"><span>هزینه انبارداری</span></th>
+          <th scope="col"><span>هزینه صدور بیمه نامه</span></th>
+          <th scope="col"><span>عوارض گمرکی</span></th>
+          <th scope="col"><span>هزینه ساخت لوله</span></th>
+          <th scope="col"><span>هزینه پوشش</span></th>
+          <th scope="col"><span>مالیات ارزش افزوده و سایر خدمات (ورق)</span></th>
+          <th scope="col"><span>مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><span>0</span></th>
+          <td><span>{data[6]}</span></td>
+          <td><span>{data[1]}</span><i>تاریخ</i></td>
+          <td><span>{data[2]}</span><i>شرح</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{data[4]}</span><i>توضیحات</i></td>
+          <td><span>s<a href="https://api.daricbot.ir/download?file_name=${data[5]}"} target="_blank">مشاهده</a>}</span><i>پیوست</i></td>
+        </tr>
+        <tr>
+          <th scope="row"><span>0</span></th>
+          <td><span>{data[6]}</span></td>
+          <td><span>{data[1]}</span><i>تاریخ</i></td>
+          <td><span>{data[2]}</span><i>شرح</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{data[4]}</span><i>توضیحات</i></td>
+          <td><span>s:<a href="https://api.daricbot.ir/download?file_name=${data[5]}"} target="_blank">مشاهده</a>}</span><i>پیوست</i></td>
+        </tr>
+        <tr>
+          <th scope="row"><span>0</span></th>
+          <td><span>{data[6]}</span></td>
+          <td><span>{data[1]}</span><i>تاریخ</i></td>
+          <td><span>{data[2]}</span><i>شرح</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{FormatNumber(data[3])}</span><i>مبلغ دلاری</i></td>
+          <td><span>{data[4]}</span><i>توضیحات</i></td>
+          <td><span>s<a href="https://api.daricbot.ir/download?file_name=${data[5]}"} target="_blank">مشاهده</a>}</span><i>پیوست</i></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>

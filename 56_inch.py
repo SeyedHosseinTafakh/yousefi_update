@@ -23,7 +23,7 @@ options = {
 
 
 def make_56_pdf(file_name):    
-    URL = 'https://api.daricbot.ir/pipeLinesF'
+    URL = 'https://api_resource.daricbot.ir/pipeLinesF'
     r = requests.get(url = URL) 
     data = dict(r.json())
     test = []

@@ -22,7 +22,7 @@ options = {
 }
 
 def make_turobocompressor_pdf(file_name):
-    URL = 'https://api.daricbot.ir/comperosor'
+    URL = 'https://api_resource.daricbot.ir/comperosor'
     r = requests.get(url = URL) 
     data = r.json()
     clean_data = []

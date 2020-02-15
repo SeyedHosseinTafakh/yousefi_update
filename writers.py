@@ -4,7 +4,7 @@ Created on Thu Jan 30 16:25:36 2020
 
 @author: hossein
 """
-
+from PyPDF2 import PdfFileMerger
 import codecs
 import random
 import string
@@ -44,14 +44,12 @@ def add_content(html_original , contents):
     i = 0
     pages = []
     for list_contents in contents:
-        print(i)
         if i ==22 :
             
             html = html_original.split('<tbody>')
             html = html[0]+"<tbody>\n" +contents_data + "</tbody>\n" + html[1]
             page_name = randomString(4)+'.html'
             pages.append(page_name)
-            print(pages)
             write_html_file(page_name , html)
             contents_data = ""
             i = 0
@@ -110,35 +108,15 @@ def add_page_counters(pages,numbers = []):
         html = open_html('temp/'+page)
         html = html.replace('page_counter',str(number))
         write_html_file(page , html)
-    
 
 
 
-#html_data = open_html()
-#headers = ['ردیف','جمع ریالی','جمع ارزی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی','هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
-#html_data = add_headers(html_data , headers)
-#data = [[1,2],[3,4],[5,6]]
-#html_data = add_content(html_data , data)
-
-#write_html_file('shandool2.html',html_data)
-
-
-
-
-#-------------------------------------------------------------------
-    
-#html_data = open_html()
-#headers = ['ردیف','جمع ریالی','جمع ارزی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی','هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
-
-#header_contents = ['گزارش تراز مالی-لوله های 56(نتایج)', 'قسط شماره یکم آذر ماه 1396' , 'گذارش گیری در تاریخ: بهمن 1398']
-#html_data = add_header_document(html_data , header_contents)
-
-#html_data = add_headers(html_data , headers)
-#html_data = add_content(html_data , output2)
-
-
-#write_html_file('shandool2.html',html_data)
-
+def combine_pdfs(pdfs,result_name):
+    merger = PdfFileMerger()
+    for pdf in pdfs:
+        merger.append(pdf,import_bookmarks=False)
+    merger.write(result_name+'.pdf')
+    merger.close()
 
 
 

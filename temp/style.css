@@ -142,17 +142,33 @@ html{
 	/*position: absolute;*/
 	background: grey;
 	border-radius: 8px !important;
-	width: 1880px;
+	/*width: 1880px;*/
 	height: 70px;
 	margin-right: 0.5in;
 	/*margin-top: 1150px;*/
 }
 
 .col-container2 {
-    display: table;
-    width: 1880px;
+    /*display: table;*/
+    position: fixed;
+    width: 80px;
+    height: 80px;
     border-radius: 8px;
     background-color: #fff;
-    margin-right: 0.5in;
-    margin-top: 1150px;
+    /*margin-right: 0.5in;*/
+    /*margin-top: 50px;*/
+    bottom: 50px;
+}
+
+img {
+  width:150px;
+  height:100px;
+  /*background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;*/
+}
+
+.gaz-logo{
+    position: fixed;
+    /*margin-top: 50px;*/
+    margin-right: 1730px;
+    bottom: 30px;
 }

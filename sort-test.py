@@ -2,7 +2,7 @@
 import pandas as pd
 import requests 
 
-URL = 'https://api.daricbot.ir/pipeLinesF'
+URL = 'https://api_resource.daricbot.ir/pipeLinesF'
 
 
 r = requests.get(url = URL) 

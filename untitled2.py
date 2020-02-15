@@ -6,7 +6,10 @@ Created on Sun Feb  9 16:03:02 2020
 """
 
 import locale
-
+import requests
+from writers import *
+import pandas as pd
+import numpy as np
 def enToArNumb(number): 
     dic = { 
         '0':'۰', 
@@ -23,8 +26,6 @@ def enToArNumb(number):
     if number in dic:
         return dic.get(number)    
     return number
-
-num=[1,3,4,5]
 
 #ar_numbers = [enToArNumb(num) for num in numbers]
 
@@ -85,6 +86,35 @@ def add_commas(number):
 
 def rv_zeros_af_dot(number):
     return number.split('.')[0]
+
+
+URL = 'https://api.daricbot.ir/peymankaran'
+r = requests.get(url = URL)
+data = r.json()
+x = pd.DataFrame(data)
+x = x.sort_values(4)
+sum_last_row = pd.DataFrame(x)
+sum_last_row[3] = sum_last_row[3].astype(float)
+sum_last_row[0] = sum_last_row[[0]].applymap(np.int64)
+sum_last_row[0] = list(range(1,len(sum_last_row)+1))
+
+sum_last_row = sum_last_row.append(pd.Series() , ignore_index=True)
+len_od_df = len(sum_last_row)-1
+sum_last_row = sum_last_row.fillna(0)
+sum_last_row[0] = sum_last_row[[0]].applymap(np.int64)
+
+sum_last_row.loc[len_od_df,0] = 'کل'
+sum_last_row.loc[len_od_df,3] = truncate(sum_last_row[3].sum(skipna=True))
+
+
+
+
+
+
+
+
+
+#------------------------------------------------
 #y0 = sum_last_row[2].astype(str)
 sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas)
 
@@ -95,6 +125,35 @@ sum_last_row[2] = sum_last_row[2].map(rv_zeros_af_dot).map(enToFarsiPandas)
 sum_last_row[4] = sum_last_row[4].astype(str).map(enToFarsiPandas)
 
 sum_last_row[5] = sum_last_row[5].astype(str).map(enToFarsiPandas)
+
+
+
+output2 = sum_last_row.values.tolist()
+html_data = open_html()
+headers = ['ردیف','نام پیمانکار','شماره چک' , 'مبلغ چک','تاریخ چک','توضیحات']
+header_contents = ['گزارش تراز مالی-لوله های 56(نتایج)', 'قسط شماره یکم آذر ماه 1396' , 'گذارش گیری در تاریخ: بهمن 1398']
+html_data = add_header_document(html_data , header_contents)
+
+html_data = add_headers(html_data , headers)
+page_names = add_content(html_data , output2)
+add_page_counters(page_names)
+
+def combine_pdfs(page_names,naming_pdf):
+    pdfs = []
+    for page in page_names:
+        pdf_name = randomString() + '.pdf'
+        pdfkit.from_file('temp/'+page, pdf_name,configuration=config , options=options)
+        pdfs.append(pdf_name)
+#--------------------------------------------------
+        
+
+pdfkit.from_file('temp/'+page_names[0], 'test.pdf',configuration=config , options=options)
+pdfkit.from_file('temp/'+page_names[2], 'test.pdf',configuration=config , options=options)
+
+
+
+
+        
 #-------------------------------------
 #y1 = sum_last_row[3].map(rv_zeros_af_dot)
 #y2 = y1.map(add_commas)

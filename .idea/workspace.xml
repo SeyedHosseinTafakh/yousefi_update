@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="324907a1-2b80-4637-92e4-d9f8f7dba88f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/22.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/56_inch_html_file.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/56_inch_natayej.html" afterPath="" />
       <change beforePath="$PROJECT_DIR$/api.py" afterPath="$PROJECT_DIR$/api.py" />
-      <change beforePath="$PROJECT_DIR$/evaa.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mergeed.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/peymankaran.py" afterPath="$PROJECT_DIR$/peymankaran.py" />
-      <change beforePath="$PROJECT_DIR$/peymankaran_html_file.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/result.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/result2.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/sample.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/shandool.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/shandool2.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test_peymankaran.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test_peymankaran1.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test_peymankaran2.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testing.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/torbocompress_html_file.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/torbocompress_html_file.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/untitled2.py" afterPath="$PROJECT_DIR$/untitled2.py" />
-      <change beforePath="$PROJECT_DIR$/writers.py" afterPath="$PROJECT_DIR$/writers.py" />
-      <change beforePath="$PROJECT_DIR$/yauk.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/yjgt.pdf" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,17 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="325">
+              <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#488#658#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="peymankaran.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="peymankaran.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/peymankaran.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
@@ -117,8 +94,8 @@
         <option value="$PROJECT_DIR$/22.html" />
         <option value="$PROJECT_DIR$/default_html_template.html" />
         <option value="$PROJECT_DIR$/writers.py" />
-        <option value="$PROJECT_DIR$/api.py" />
         <option value="$PROJECT_DIR$/peymankaran.py" />
+        <option value="$PROJECT_DIR$/api.py" />
       </list>
     </option>
   </component>
@@ -259,7 +236,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -268,7 +245,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#488#658#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -304,7 +284,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="1" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="22" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#488#658#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -594,19 +577,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/peymankaran.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#488#658#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

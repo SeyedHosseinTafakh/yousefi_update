@@ -138,7 +138,7 @@ html_data = add_headers(html_data , headers)
 page_names = add_content(html_data , output2)
 add_page_counters(page_names)
 
-def combine_pdfs(page_names,naming_pdf):
+def make_pdfs(page_names,naming_pdf):
     pdfs = []
     for page in page_names:
         pdf_name = randomString() + '.pdf'
@@ -146,9 +146,6 @@ def combine_pdfs(page_names,naming_pdf):
         pdfs.append(pdf_name)
 #--------------------------------------------------
         
-
-pdfkit.from_file('temp/'+page_names[0], 'test.pdf',configuration=config , options=options)
-pdfkit.from_file('temp/'+page_names[2], 'test.pdf',configuration=config , options=options)
 
 
 

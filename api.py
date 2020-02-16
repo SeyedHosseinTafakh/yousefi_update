@@ -11,6 +11,7 @@ import requests
 from writers import *
 import pdfkit
 import numpy as np
+from peymankaran import *
 path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
 config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 options = {
@@ -27,6 +28,10 @@ def home():
     return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
 
 
+@app.route('/', methods=['download'])
+def download():
+    return 's'
+
 
 
 
@@ -36,11 +41,11 @@ def home():
 @app.route('/peymankaran', methods=['POST'])
 def peymankaran():
     parser = reqparse.RequestParser()
-    parser.add_argument('tarikh',required = True)
-    parser.add_argument('title',required = True)
-    parser.add_argument('shomare',required = True)
+    parser.add_argument('right',required = True)
+    parser.add_argument('middle',required = True)
+    parser.add_argument('left',required = True)
     args = parser.parse_args()
-
+    make_peymankaran_pdf('random_name',args)
     return str(args)
 
 app.run()

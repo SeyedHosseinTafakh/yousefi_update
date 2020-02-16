@@ -8,6 +8,22 @@ from PyPDF2 import PdfFileMerger
 import codecs
 import random
 import string
+import os
+import pdfkit
+
+from PyPDF2 import PdfFileMerger
+
+path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+options = {
+    'page-size': 'A3',
+     'margin-top': '0in',
+     'margin-right': '0in',
+     'margin-bottom': '0in',
+     'margin-left': '0in',
+     'orientation' : 'landscape',
+}
+
 
 def randomString(stringLength=10):
     """Generate a random string of fixed length """
@@ -101,6 +117,7 @@ def add_header_document(html , contents):
     return html
 
 def add_page_counters(pages,numbers = []):
+    x = []
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
@@ -108,15 +125,73 @@ def add_page_counters(pages,numbers = []):
         html = open_html('temp/'+page)
         html = html.replace('page_counter',str(number))
         write_html_file(page , html)
-
-
+        x.append(page)
+    return x
 
 def combine_pdfs(pdfs,result_name):
     merger = PdfFileMerger()
     for pdf in pdfs:
-        merger.append(pdf,import_bookmarks=False)
-    merger.write(result_name+'.pdf')
+        pdf = pdf
+        print(pdf)
+        merger.append(open(pdf,'rb'),import_bookmarks=False)
+    merger.write('pdfs/'+result_name+'.pdf')
     merger.close()
+
+
+def listToString(s):
+    str1 = ""
+    for ele in s:
+        str1 += ele
+    return str1
+
+
+def enToFarsiPandas(row):
+    re_row = []
+    for data in row:
+        a_cell = []
+        for cell in data:
+            a_cell.append(enToArNumb(cell))
+        re_row.append(listToString(a_cell))
+    return listToString(re_row)
+
+
+def add_commas(number):
+    if type(number) == str:
+        return number
+    else:
+        number = '{:,.2f}'.format(number)
+        return number
+
+
+def rv_zeros_af_dot(number):
+    return number.split('.')[0]
+
+def enToArNumb(number):
+    dic = {
+        '0':'۰',
+        '1':'١',
+        '2':'٢',
+        '3':'۳',
+        '4':'۴',
+        '5':'۵',
+        '6':'۶',
+        '7':'۷',
+        '8':'۸',
+        '9':'۹',
+    }
+    if number in dic:
+        return dic.get(number)
+    return number
+
+
+
+def make_pdfs(page_names):
+    pdfs = []
+    for page in page_names:
+        pdf_name = page.split('.html')[0] + '.pdf'
+        pdfkit.from_file('temp/'+page , pdf_name,configuration=config , options=options)
+        pdfs.append(pdf_name)
+    return pdfs
 
 
 

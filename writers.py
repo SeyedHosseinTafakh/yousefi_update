@@ -23,6 +23,14 @@ options = {
      'margin-left': '0in',
      'orientation' : 'landscape',
 }
+#options = {
+#    'page-size': 'A4',
+#     'margin-top': '0in',
+#     'margin-right': '0in',
+#     'margin-bottom': '0in',
+#     'margin-left': '0in',
+#     'orientation' : 'portrait ',
+#}
 
 
 def randomString(stringLength=10):
@@ -121,7 +129,6 @@ def add_page_counters(pages,numbers = []):
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
-        print(number)
         html = open_html('temp/'+page)
         html = html.replace('page_counter',str(number))
         write_html_file(page , html)
@@ -132,7 +139,7 @@ def combine_pdfs(pdfs,result_name):
     merger = PdfFileMerger()
     for pdf in pdfs:
         pdf = pdf
-        print(pdf)
+        
         merger.append(open(pdf,'rb'),import_bookmarks=False)
     merger.write('pdfs/'+result_name+'.pdf')
     merger.close()
@@ -189,8 +196,17 @@ def make_pdfs(page_names):
     pdfs = []
     for page in page_names:
         pdf_name = page.split('.html')[0] + '.pdf'
-        pdfkit.from_file('temp/'+page , pdf_name,configuration=config , options=options)
+        print('1')
+        page_str = open_html('temp/'+page)
+        print('2')
+        css = ['temp/style.css']
+        print('3')
+        pdfkit.from_string(page_str , pdf_name , options=options , css = css,configuration=config)
+        print('4')
+        #css = ['temp/style.css']
+        #pdfkit.from_file('temp/'+page , pdf_name,configuration=config , options=options,css=css)
         pdfs.append(pdf_name)
+        print('5')
     return pdfs
 
 

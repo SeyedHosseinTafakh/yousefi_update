@@ -10,11 +10,15 @@ import random
 import string
 import os
 import pdfkit
-
+import pathlib
 from PyPDF2 import PdfFileMerger
+from pyvirtualdisplay import Display
 
-path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+display = Display(visible=0, size=(600,600))
+display.start()
+#path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+config = pdfkit.configuration()
+#config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 options = {
     'page-size': 'A3',
      'margin-top': '0in',
@@ -43,7 +47,7 @@ def truncate(n, decimals=0):
     return int(n * multiplier) / multiplier
 
 
-def open_html(file = 'default_html_template.html'):
+def open_html(file = '/home/ubuntu/report/yousefi_update/default_html_template.html'):
     html = codecs.open(file , 'r','utf-8')
     html_content = html.read()
     html.close()
@@ -59,7 +63,9 @@ def add_headers(html,headers):
     return html_half
 
 def write_html_file(file_name , html_file):
-    file = codecs.open('temp/'+file_name,'w','utf-8')
+    path = pathlib.Path().absolute().__str__()
+#    print(path)
+    file = codecs.open(path+'/temp/'+file_name,'w','utf-8')
     file.write(html_file)
     file.close()
 
@@ -125,23 +131,26 @@ def add_header_document(html , contents):
     return html
 
 def add_page_counters(pages,numbers = []):
+    path = pathlib.Path().absolute().__str__()
     x = []
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
-        html = open_html('temp/'+page)
+        html = open_html(path+'/temp/'+page)
         html = html.replace('page_counter',str(number))
         write_html_file(page , html)
         x.append(page)
     return x
 
 def combine_pdfs(pdfs,result_name):
+    print('i dont fucking know')
+    path = pathlib.Path().absolute().__str__()
     merger = PdfFileMerger()
     for pdf in pdfs:
         pdf = pdf
         
         merger.append(open(pdf,'rb'),import_bookmarks=False)
-    merger.write('pdfs/'+result_name+'.pdf')
+    merger.write(path+'/pdfs/'+result_name)
     merger.close()
 
 
@@ -195,18 +204,20 @@ def enToArNumb(number):
 def make_pdfs(page_names):
     pdfs = []
     for page in page_names:
+        path = pathlib.Path().absolute().__str__()
         pdf_name = page.split('.html')[0] + '.pdf'
-        print('1')
+#        print('1')
         page_str = open_html('temp/'+page)
-        print('2')
-        css = ['temp/style.css']
-        print('3')
-        pdfkit.from_string(page_str , pdf_name , options=options , css = css,configuration=config)
-        print('4')
+#        print('2')
+#        css = [path+'/temp/style.css']
+#        print('3')
+        pdfkit.from_string(page_str , pdf_name , options=options,configuration=config)
+#        print('4')
         #css = ['temp/style.css']
         #pdfkit.from_file('temp/'+page , pdf_name,configuration=config , options=options,css=css)
-        pdfs.append(pdf_name)
-        print('5')
+        #pdfs.append(pdf_name)
+        #display.popen.terminate()
+#        print('5')
     return pdfs
 
 

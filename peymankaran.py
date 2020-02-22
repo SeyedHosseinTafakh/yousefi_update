@@ -8,16 +8,16 @@ import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
 
-path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-options = {
+#path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+#config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+'''options = {
     'page-size': 'A3',
      'margin-top': '0in',
      'margin-right': '0in',
      'margin-bottom': '0in',
      'margin-left': '0in',
      'orientation' : 'landscape',
-}
+}'''
 
 def make_peymankaran_pdf(file_name , header):
 
@@ -60,6 +60,8 @@ def make_peymankaran_pdf(file_name , header):
     page_names = add_content(html_data , output2)
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names)
+    print('--------------------------------------------------------------------')
+    print(pdf_names)
     combine_pdfs(pdf_names,file_name)
 
 #make_peymankaran_pdf('testing.pdf')

@@ -8,16 +8,6 @@ import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
 
-#path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-#config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-'''options = {
-    'page-size': 'A3',
-     'margin-top': '0in',
-     'margin-right': '0in',
-     'margin-bottom': '0in',
-     'margin-left': '0in',
-     'orientation' : 'landscape',
-}'''
 
 def make_peymankaran_pdf(file_name , header):
 
@@ -38,15 +28,15 @@ def make_peymankaran_pdf(file_name , header):
     
     sum_last_row.loc[len_od_df,0] = 'کل'
     sum_last_row.loc[len_od_df,3] = truncate(sum_last_row[3].sum(skipna=True))
-    sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas)
+    sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas2)
     
-    sum_last_row[3] = sum_last_row[3].map(add_commas).map(rv_zeros_af_dot).map(enToFarsiPandas)
+    sum_last_row[3] = sum_last_row[3].map(add_commas).map(rv_zeros_af_dot).map(enToFarsiPandas2)
     sum_last_row[2] = sum_last_row[2].map(add_commas)
-    sum_last_row[2] = sum_last_row[2].map(rv_zeros_af_dot).map(enToFarsiPandas)
+    sum_last_row[2] = sum_last_row[2].map(rv_zeros_af_dot).map(enToFarsiPandas2)
     
-    sum_last_row[4] = sum_last_row[4].astype(str).map(enToFarsiPandas)
+    sum_last_row[4] = sum_last_row[4].astype(str).map(enToFarsiPandas2)
     
-    sum_last_row[5] = sum_last_row[5].astype(str).map(enToFarsiPandas)
+    sum_last_row[5] = sum_last_row[5].astype(str).map(enToFarsiPandas2)
     
     
     
@@ -64,7 +54,9 @@ def make_peymankaran_pdf(file_name , header):
     print(pdf_names)
     combine_pdfs(pdf_names,file_name)
 
-#make_peymankaran_pdf('testing.pdf')
+
+#testing
+#make_peymankaran_pdf('testing.pdf',{'right':'right', 'middle':'middle' , 'left':'left'})
 
 
 

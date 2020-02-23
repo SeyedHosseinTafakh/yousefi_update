@@ -9,12 +9,13 @@ import numpy as np
 from peymankaran import *
 import glob , os
 from flask import jsonify ,send_file , request
-
+import pathlib
+from flask_cors import CORS
 
 app = flask.Flask(__name__)
 api = Api(app)
 app.config["DEBUG"] = True
-
+cors = CORS(app, resources={r"": {"origins": ""}})
 #path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
 #config = pdfkit.configuration()
 '''options = {
@@ -28,9 +29,10 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def index():
-    os.chdir("pdfs/")
+    path = path = pathlib.Path().absolute().__str__()
+    #os.chdir(path+"/pdfs/")
     file_names = []
-    for file in glob.glob("*.pdf"):
+    for file in glob.glob("pdfs/*.pdf"):
         file_names.append(file)
     return jsonify(file_names)
     #return "HELo world from linux"

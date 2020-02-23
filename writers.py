@@ -209,13 +209,13 @@ def make_pdfs(page_names):
 #        print('1')
         page_str = open_html('temp/'+page)
 #        print('2')
-#        css = [path+'/temp/style.css']
+        css = ['temp/style.css']
 #        print('3')
-        pdfkit.from_string(page_str , pdf_name , options=options,configuration=config)
+        pdfkit.from_string(page_str , pdf_name , css= css,options=options,configuration=config)
 #        print('4')
         #css = ['temp/style.css']
         #pdfkit.from_file('temp/'+page , pdf_name,configuration=config , options=options,css=css)
-        #pdfs.append(pdf_name)
+        pdfs.append(pdf_name)
         #display.popen.terminate()
 #        print('5')
     return pdfs

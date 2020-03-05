@@ -7,19 +7,11 @@ Created on Thu Feb  6 17:18:05 2020
 
 
 import pandas as pd
-import requests 
+import requests
 from writers import *
-import pdfkit 
-path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-options = {
-    'page-size': 'A3',
-     'margin-top': '0in',
-     'margin-right': '0in',
-     'margin-bottom': '0in',
-     'margin-left': '0in',
-     'orientation' : 'landscape',
-}
+import pdfkit
+import numpy as np
+from PyPDF2 import PdfFileMerger
 
 
 def make_56_pdf(file_name):    
@@ -41,7 +33,7 @@ def make_56_pdf(file_name):
         x = []
         x.append(i)
         x.append(truncate(data[data_point]['motalebat_riyali'],2))
-        x.append(0)
+        x.append(0)# next + next
         x.append(truncate(data[data_point]['mablaghe_varagh'],2))
         x.append(truncate(data[data_point]['arzi_sakht_va_pooshesh'],2))
         x.append(truncate(float(data[data_point]['dataBase'][1]),2))#5

@@ -131,7 +131,8 @@ html{
 	background: #fff;
 	width: 1880px;
 	height: 1065px;
-	border-radius: 8px !important;
+    /*height: 830px;*/
+    border-radius: 8px !important;
 	margin-right: 0.5in;
 	margin-top: 0.5in;
 }
@@ -171,4 +172,27 @@ img {
     /*margin-top: 50px;*/
     margin-right: 1730px;
     bottom: 30px;
+}
+
+
+
+.info_background{
+    margin-top: 0.20in;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-right: 0.5in;
+    width: 95.5%;
+}
+
+.labels{
+    display: table-cell;
+    max-width: 20%;
+    padding-right: 10px;
+}
+
+.spans{
+    /*margin-right: 200px;*/
+    padding-right: 70px;
+    display: table-cell;
+    max-width: 80%;
 }

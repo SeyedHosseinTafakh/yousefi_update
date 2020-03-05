@@ -11,25 +11,42 @@ import string
 import os
 import pdfkit
 import pathlib
+from os import path as path_os
 from PyPDF2 import PdfFileMerger
 from pyvirtualdisplay import Display
+from datetime import timedelta
+from khayyam import JalaliDate, JalaliDatetime
+import datetime
+import calendar
+
+import platform
+
+from khayyam import *
+from datetime import date
+JalaliDatetime(989, 3, 25, 10, 43, 23, 345453)
+
+#repository
+#df.append(pandas.Series(), ignore_index=True)
 
 
-#---------------------------linux-------------------------------
-#display = Display(visible=0, size=(600,600))
-#display.start()
-#config = pdfkit.configuration()
+#dont touch
 
-#---------------------------windows-------------------------------
-path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+if platform.system() =='Linux':
+    #---------------------------linux-------------------------------
+    display = Display(visible=0, size=(600,600))
+    display.start()
+    config = pdfkit.configuration()
+else:
+    #---------------------------windows-------------------------------
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 options = {
-    'page-size': 'A3',
+    'page-size': 'A4',
      'margin-top': '0in',
      'margin-right': '0in',
      'margin-bottom': '0in',
      'margin-left': '0in',
-     'orientation' : 'landscape',
+     'orientation' : 'portrait',
 }
 #options = {
 #    'page-size': 'A4',
@@ -37,6 +54,7 @@ options = {
 #     'margin-right': '0in',
 #     'margin-bottom': '0in',
 #     'margin-left': '0in',
+#       landscape
 #     'orientation' : 'portrait ',
 #}
 
@@ -76,12 +94,12 @@ def write_html_file(file_name , html_file):
     file.write(html_file)
     file.close()
 
-def add_content(html_original , contents):
+def add_content(html_original , contents , first_page_row_numbers=22):
     contents_data = ""
     i = 0
     pages = []
     for list_contents in contents:
-        if i ==22 :
+        if i ==first_page_row_numbers :
             
             html = html_original.split('<tbody>')
             html = html[0]+"<tbody>\n" +contents_data + "</tbody>\n" + html[1]
@@ -90,6 +108,7 @@ def add_content(html_original , contents):
             write_html_file(page_name , html)
             contents_data = ""
             i = 0
+            first_page_row_numbers = 22
             continue
         '''if i ==25 and len(pages) != 0:
             html = html_original.split('<tbody>')
@@ -137,14 +156,14 @@ def add_header_document(html , contents):
     html = html[0] + contents_data +html[1]
     return html
 
-def add_page_counters(pages,numbers = []):
+def add_page_counters(pages,numbers = [],pusher=0):
     #path = pathlib.Path().absolute().__str__()
     x = []
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
         html = open_html('/temp/'+page)
-        html = html.replace('page_counter',str(number))
+        html = html.replace('page_counter',str(number+pusher))
         write_html_file(page , html)
         x.append(page)
     return x
@@ -201,7 +220,9 @@ def enToArNumb(number):
 
 
 
-def make_pdfs(page_names):
+def make_pdfs(page_names,css_path='temp/style.css'):
+    css = [css_path]
+    
     pdfs = []
     for page in page_names:
         path = pathlib.Path().absolute().__str__()
@@ -209,7 +230,7 @@ def make_pdfs(page_names):
 #        print('1')
         page_str = open_html('temp/'+page)
 #        print('2')
-        css = ['temp/style.css']
+        
 #        print('3')
         pdfkit.from_string(page_str , pdf_name , css= css,options=options,configuration=config)
 #        print('4')
@@ -253,17 +274,71 @@ def enToFarsiPandas2(data):
     return data
 
 
+def add_div_and_seprator_for_info(html):
+    data = '<div class="seprator"></div> \n <div class="info_background">  \n<!-- label_place_holder --> \n <!-- span_place_holder -->\n </div>'
+    if html.find('<!-- div_container_and_seprator_place_holder -->') >=0:
+        html = html.replace('<!-- div_container_and_seprator_place_holder -->' , data)
+        return html
+    return html
+def add_labels(html, labels):
+    data = ['<div class="labels">\n']
+    for label in labels:
+        data.append('<h4 style="text-align: left">'+label+'</h4> \n')
+    data = listToString(data)
+    data += '</div>'
+    html = html.replace('<!-- label_place_holder -->',data)
+    return html
+
+def add_spans(html , spans):
+    data = ['<div class="spans">\n']
+    for span in spans:
+        data.append('<h5 style="text-align: right;">'+span+'</h5> \n')
+    data= listToString(data)
+    data +='</div>'
+    html = html.replace('<!-- span_place_holder -->',data)
+    return html
+
+def add_percentage_sign(data):
+    if type(data) == str:
+        data = data+ ' %'
+    return data
+
+
+def add_months(sourcedate, months):
+    month = sourcedate.month - 1 + months
+    year = sourcedate.year + month // 12
+    month = month % 12 + 1
+    day = min(sourcedate.day, calendar.monthrange(year,month)[1])
+    return datetime.date(year, month, day)
+
+def handle_month(number):
+    month_center = 4
+    to_month = int(number) - month_center
+    time = JalaliDatetime(1396, 12, 17)
+    time = add_months(time , to_month)
+    time = [str(time.year) , str(time.month) , '17']
+    return time[0]+'-'+time[1]+'-'+time[2]
 
 
 
+def add_check_mark(data):
+    if data=='1':
+        return '<p>&#10004;</p>'
+    if data=='0':
+        return '<p>&#10006;</p>'
+    return data
+def check_file(file_name):
+    path = pathlib.Path().absolute().__str__()
+    if path_os.exists(path + '\\'+file_name):
+        return True
+    return False
+
+def deleter(file_name):
+    if check_file(file_name):
+        os.remove(file_name)
+        
+        
 
 
 
-
-
-
-
-
-
-
-
+        

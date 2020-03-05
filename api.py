@@ -26,6 +26,12 @@ def index():
     #os.chdir(path+"/pdfs/")
     file_names = []
     for file in glob.glob("pdfs/*.pdf"):
+                
+        if platform.system() =='Linux':
+            
+            file=file.replace('pdfs/','')
+        else:
+            file = file.replace('pdfs\\','')
         file_names.append(file)
     return jsonify(file_names)
     #return "HELo world from linux"
@@ -51,4 +57,4 @@ def peymankaran():
     return "OK"
 
 
-app.run(port=8080)
+#app.run(port=8080)

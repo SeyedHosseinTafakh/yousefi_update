@@ -90,7 +90,7 @@ def add_headers(html,headers):
 def write_html_file(file_name , html_file):
     path = pathlib.Path().absolute().__str__()
     print(path)
-    file = codecs.open(path+'\\temp\\'+file_name,'w','utf-8')
+    file = codecs.open(path+'/temp/'+file_name,'w','utf-8')
     file.write(html_file)
     file.close()
 
@@ -162,7 +162,7 @@ def add_page_counters(pages,numbers = [],pusher=0):
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
-        html = open_html('/temp/'+page)
+        html = open_html('temp/'+page)
         html = html.replace('page_counter',str(number+pusher))
         write_html_file(page , html)
         x.append(page)

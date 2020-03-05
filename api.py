@@ -54,6 +54,8 @@ def peymankaran():
         if not 'id_gostare' in args:
             return 'error : id_gosrare required'
         make_pishraft_fiziki_pdf(args['id_gostare'])
+    if args['type'] =='tahsil_arazi':
+        make_arazi_pdf()
     return "OK"
 
 

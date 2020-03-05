@@ -2,31 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="324907a1-2b80-4637-92e4-d9f8f7dba88f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/56_inch.py" afterPath="$PROJECT_DIR$/56_inch.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/api.py" afterPath="$PROJECT_DIR$/api.py" />
-      <change beforePath="$PROJECT_DIR$/default_html_template.html" afterPath="$PROJECT_DIR$/default_html_template.html" />
-      <change beforePath="$PROJECT_DIR$/emgb.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/gykj.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/jgar.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/taahodate_naftanir.py" afterPath="$PROJECT_DIR$/taahodate_naftanir.py" />
-      <change beforePath="$PROJECT_DIR$/temp/Gaz.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/a.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/bkhk.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/emgb.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/gykj.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/gyuy.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/impu.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/jgar.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/mnow.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/nenp.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/rerc.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/sjbz.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/style.css" afterPath="$PROJECT_DIR$/temp/style.css" />
-      <change beforePath="$PROJECT_DIR$/temp/vrwl.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/wghc.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/temp/xnpz.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/vrwl.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/writers.py" afterPath="$PROJECT_DIR$/writers.py" />
+      <change beforePath="$PROJECT_DIR$/pdfs/test_tahsil_arazi.pdf" afterPath="$PROJECT_DIR$/pdfs/test_tahsil_arazi.pdf" />
+      <change beforePath="$PROJECT_DIR$/pishraft_fiziki.py" afterPath="$PROJECT_DIR$/pishraft_fiziki.py" />
+      <change beforePath="$PROJECT_DIR$/tahsil_arazi.py" afterPath="$PROJECT_DIR$/tahsil_arazi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,8 +20,8 @@
       <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="50" column="14" lean-forward="false" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+            <state relative-caret-position="607">
+              <caret line="57" column="24" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -441,22 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/temp/17.html" />
     <entry file="file://$PROJECT_DIR$/api_resource/peymankaran.py" />
-    <entry file="file://$PROJECT_DIR$/temp/oxym.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-379">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/temp/gnlh.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/temp/oxym.html" />
+    <entry file="file://$PROJECT_DIR$/temp/gnlh.html" />
     <entry file="file://$PROJECT_DIR$/peymankaran.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -483,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="50" column="14" lean-forward="false" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+        <state relative-caret-position="607">
+          <caret line="57" column="24" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>

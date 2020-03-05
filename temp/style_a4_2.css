@@ -1,0 +1,196 @@
+
+.table th,.table td{
+    /* background-color: #f2f2f2; */
+    border: none !important;
+    border-bottom-color:#fff !important;
+    /* border-radius: 8px !important; */
+    vertical-align: middle !important;
+    padding: 0px;
+    text-align: center;
+    direction: ltr;
+    white-space: nowrap;
+    /*white-space: normal;*/
+    position: relative;
+    z-index: -1;
+}
+.table th>span, .table td>span{
+    background-color: #f2f2f2;
+    border: 2px solid #fff;
+    padding: 2px;
+    display: block;
+    border-radius: 8px !important;
+}
+
+.table tbody tr:hover td>span ,.table tbody tr:hover th>span{
+    background-color: #004F7F !important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-border-radius: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    color: #fff;
+    max-width: 40%;
+}
+.table.modelmali th>span:empty{
+    background: none;
+}
+.table.modelmali tbody tr:hover th>span:empty{
+    background: none !important;
+}
+.table.modelmali tbody tr:nth-child(1) ,.table.modelmali tbody tr:last-child{
+    font-weight: 200;
+}
+.table.modelmali th{
+    font-weight: 200;
+}
+.table tbody tr td i{
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: calc(100% - 2px);
+    left: 0;
+    right: 0;
+    background: rgb(251, 192, 14);
+    border-radius: 4px;
+    padding: 5px;
+    opacity: 0.96;
+    color: #fff;
+    z-index: 9999;
+}
+
+.table tbody tr td i:before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    display: table;
+    margin: 0 auto;
+    border-top: 6px solid rgb(251, 192, 14);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+.table.popup tbody tr td:hover i{
+    display: block;
+}
+.table thead th>span{
+    background-color: #b5b5b5;
+    direction: rtl;
+}
+.table tbody tr:nth-child(even) td>span,.table tbody tr:nth-child(even) th>span{
+    background-color: #d8d8d8;
+}
+
+
+
+table{
+    border-collapse: separate;
+    z-index: 1;
+    position: relative;
+    /*width: 1080px;*/
+    margin-left: 10px;
+}
+
+
+html{
+    background-image:  url('https://i.ibb.co/tPW2Yhj/a.jpg') !important; 
+    height: 100%;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+	background-attachment: scroll;
+	background-size: 100%;
+    /*width: 14048px;*/
+}
+
+.col-container {
+    display: table;
+    width: 950px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-right: 0.1in;
+    margin-top: 0.75in;
+}
+.col {
+  display: table-cell;
+  /*padding: 16px;*/
+}
+
+.table-cont {
+    /*width: 500px;*/
+    /*background: white;*/
+    /*margin-left: 0.75in;*/
+    /*margin-right: 0.75in;*/
+
+}
+.white_background{
+    /*position: absolute;*/
+    background: #fff;
+    width: 950px;
+    /*height: 1065px;*/
+    height: 1050px;
+    max-height: 90%;
+    border-radius: 8px !important;
+    margin-right: 0.5in;
+    margin-top: 0.5in;
+}
+
+
+.page-counter{
+	/*position: absolute;*/
+	background: grey;
+	border-radius: 8px !important;
+	/*width: 1880px;*/
+	height: 70px;
+	margin-right: 0.5in;
+	/*margin-top: 1150px;*/
+}
+
+.col-container2 {
+    /*display: table;*/
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background-color: #fff;
+    /*margin-right: 0.5in;*/
+    /*margin-top: 50px;*/
+    bottom: 50px;
+}
+
+img {
+  width:150px;
+  height:100px;
+  /*background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;*/
+}
+
+.gaz-logo{
+    position: fixed;
+    /*margin-top: 50px;*/
+    margin-right: 1730px;
+    bottom: 30px;
+}
+
+
+
+.info_background{
+    margin-top: 0.20in;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-right: 0.5in;
+    width: 95.5%;
+}
+
+.labels{
+    display: table-cell;
+    max-width: 20%;
+    padding-right: 10px;
+}
+
+.spans{
+    /*margin-right: 200px;*/
+    padding-right: 70px;
+    display: table-cell;
+    max-width: 80%;
+}

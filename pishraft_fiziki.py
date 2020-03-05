@@ -76,8 +76,8 @@ def make_pishraft_fiziki_pdf(id_gostare):
     
     output = pishraft_re.values.tolist()
     #---------------------------------------------------
-    pdf_name = ' گذارش پیشرفت فیزیکی' +' '+gostare_info[0][1]+' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
-
+    #pdf_name = ' گذارش پیشرفت فیزیکی' +' '+gostare_info[0][1]+' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
+    pdf_name='pishraft_fiziki.pdf'
     #---------------------------------------------------
     html = open_html()
     html = add_div_and_seprator_for_info(html)

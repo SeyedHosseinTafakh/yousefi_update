@@ -41,7 +41,7 @@ def make_peymankaran_pdf(file_name , header):
     
     output2 = sum_last_row.values.tolist()
     html_data = open_html()
-    headers=['1','2','3','4','5','6']
+    headers=['ردیف','نام پیمانکار','تاریخ چک','شماره چک','مبلغ چک','توضیحات']
     header_contents = [header['right'], header['middle'] , header['left']]
     html_data = add_header_document(html_data , header_contents)
     
@@ -54,8 +54,8 @@ def make_peymankaran_pdf(file_name , header):
     combine_pdfs(pdf_names,file_name)
 
 
-#testing
-#make_peymankaran_pdf('testing.pdf',{'right':'right', 'middle':'middle' , 'left':'left'})
+#testingnkaran_pdf('peymankaran.pdf',{'right':'گﺫﺍﺮﺷ پیﻡﺎﻧکﺍﺭﺎﻧ', 'middle':' ' , 'left':'ﺎﺴﻔﻧﺩ 1398'}
+make_peymankaran_pdf('peymankaran.pdf',{'right':'گذارش پیمانکاران', 'middle':' ' , 'left':'اسفند 1398'})
 
 
 

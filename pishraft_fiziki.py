@@ -110,7 +110,7 @@ def make_pishraft_fiziki_pdf(id_gostare):
         pdf_names = pdf_names+add_page_counters(page_names,pusher=1)
         #first_pdf_name = make_pdfs([page_names[0]],'resource/style_height.css')
         del(pdf_names[0])
-        pdf_names=make_pdfs(page_names,'temp/style_a4_1.css')
+        pdf_names=make_pdfs(page_names,'a4','temp/style_a4_1.css')
     
         combine_pdfs(first_pdf_name+pdf_names,pdf_name)
     else:

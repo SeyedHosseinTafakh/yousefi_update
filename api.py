@@ -17,7 +17,7 @@ from tahsil_arazi import *
 app = flask.Flask(__name__)
 api = Api(app)
 app.config["DEBUG"] = True
-cors = CORS(app, resources={r"": {"origins": ""}})
+cors = CORS(app, resources={r"": {"origins": "*"}})
 
 #path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
 #config = pdfkit.configuration()

@@ -240,7 +240,7 @@ def make_pdfs(page_names,options,css_path='temp/style.css'):
                    'margin-right': '0in',
                    'margin-bottom': '0in',
                    'margin-left': '0in',
-                   'orientation' : 'lanscape',}
+                   'orientation' : 'landscape',}
     pdfs = []
     for page in page_names:
         path = pathlib.Path().absolute().__str__()

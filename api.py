@@ -12,6 +12,8 @@ from flask import jsonify ,send_file , request
 import pathlib
 from flask_cors import CORS
 from pishraft_fiziki import *
+from tahsil_arazi import *
+
 app = flask.Flask(__name__)
 api = Api(app)
 app.config["DEBUG"] = True

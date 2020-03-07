@@ -33,21 +33,21 @@ JalaliDatetime(989, 3, 25, 10, 43, 23, 345453)
 
 if platform.system() =='Linux':
     #---------------------------linux-------------------------------
-    display = Display(visible=0, size=(600,600))
+    display = Display(visible=0, size=(800,600))
     display.start()
     config = pdfkit.configuration()
 else:
     #---------------------------windows-------------------------------
     path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-options = {
-    'page-size': 'A4',
-     'margin-top': '0in',
-     'margin-right': '0in',
-     'margin-bottom': '0in',
-     'margin-left': '0in',
-     'orientation' : 'portrait',
-}
+#options = {
+#    'page-size': 'A3',
+#     'margin-top': '0in',
+#     'margin-right': '0in',
+#     'margin-bottom': '0in',
+#     'margin-left': '0in',
+#     'orientation' : 'landscape',
+#}
 #options = {
 #    'page-size': 'A4',
 #     'margin-top': '0in',
@@ -220,9 +220,27 @@ def enToArNumb(number):
 
 
 
-def make_pdfs(page_names,css_path='temp/style.css'):
+def make_pdfs(page_names,options,css_path='temp/style.css'):
     css = [css_path]
-    
+   
+
+
+    if options =='a4':
+        options = {'page-size': 'A4',
+                   'margin-top': '0in',
+                   'margin-right': '0in',
+                   'margin-bottom': '0in',
+                   'margin-left': '0in',
+                   'orientation' : 'portrait',
+                   } 
+    else:
+        options = {
+                   'page-size': 'A3',
+                   'margin-top': '0in',
+                   'margin-right': '0in',
+                   'margin-bottom': '0in',
+                   'margin-left': '0in',
+                   'orientation' : 'portrait ',}
     pdfs = []
     for page in page_names:
         path = pathlib.Path().absolute().__str__()

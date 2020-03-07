@@ -38,7 +38,7 @@ def make_arazi_pdf():
     html_data = add_headers(html_data , headers)
     page_names = add_content(html_data , output)
     pdf_names = add_page_counters(page_names)
-    pdf_names = make_pdfs(page_names,'temp/style_a4_2.css')
+    pdf_names = make_pdfs(page_names,'a3','temp/style.css')
     #pdf_name = ' گذارش تحصیل اراضی' +' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
     pdf_name = 'tahsil_arazi.pdf'
     combine_pdfs(pdf_names,pdf_name)

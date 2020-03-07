@@ -20,6 +20,14 @@ def make_pishraft_fiziki_pdf(id_gostare):
     data = requests.get(url = URL)
     data = data.json()
     
+    options = {
+     'page-size': 'A4',
+     'margin-top': '0in',
+     'margin-right': '0in',
+     'margin-bottom': '0in',
+     'margin-left': '0in',
+     'orientation' : 'portrait',
+      }
     
     gostare_data = pd.DataFrame(data['gostareha'])
     pishraft_data = pd.DataFrame(data['pishraft'])
@@ -91,7 +99,7 @@ def make_pishraft_fiziki_pdf(id_gostare):
     html_data = add_headers(html_data , headers)
     page_names = add_content(html_data , output)
     pdf_names = add_page_counters(page_names)
-    first_pdf_name = make_pdfs([page_names[0]],'resource/style_height_pishraft_fiziki.css')
+    first_pdf_name = make_pdfs([page_names[0]],'a4','resource/style_height_pishraft_fiziki.css')
     if baghi_jadval.shape[0]-pishraft_re.shape[0]>0:
         output = pd.DataFrame(baghi_jadval.iloc[17:]).values.tolist()
         html = open_html()

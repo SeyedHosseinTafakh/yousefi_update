@@ -108,7 +108,7 @@ html{
 
 .col-container {
     display: table;
-    width: 950px;
+    width: 1000px;
     border-radius: 8px;
     background-color: #fff;
     margin-right: 0.1in;
@@ -116,6 +116,7 @@ html{
 }
 .col {
   display: table-cell;
+    width:1000px;
   /*padding: 16px;*/
 }
 
@@ -127,14 +128,14 @@ html{
 }
 
 .white_background{
-	/*position: absolute;*/
+	position: absolute;
 	background: #fff;
-	width: 950px;
+	width: 1000px;
 	/*height: 1065px;*/
     height: 850px;
     max-height: 90%;
 	border-radius: 8px !important;
-	margin-right: 0.5in;
+	margin-right: 0.1in;
 	margin-top: 0.5in;
 }
 
@@ -182,7 +183,7 @@ img {
     border-radius: 8px;
     background-color: #fff;
     margin-right: 0.1in;
-    width: 950px;
+    width: 1000px;
 }
 
 .labels{

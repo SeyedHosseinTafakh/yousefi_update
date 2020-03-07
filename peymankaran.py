@@ -10,7 +10,6 @@ from PyPDF2 import PdfFileMerger
 
 
 def make_peymankaran_pdf(file_name , header):
-
     URL = 'https://api.daricbot.ir/peymankaran'
     r = requests.get(url = URL)
     data = r.json()
@@ -26,7 +25,7 @@ def make_peymankaran_pdf(file_name , header):
     sum_last_row = sum_last_row.fillna(0)
     sum_last_row[0] = sum_last_row[[0]].applymap(np.int64)
     
-    sum_last_row.loc[len_od_df,0] = 'کل'
+    sum_last_row.loc[len_od_df,0] = 'kol'
     sum_last_row.loc[len_od_df,3] = truncate(sum_last_row[3].sum(skipna=True))
     sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas2)
     
@@ -42,14 +41,14 @@ def make_peymankaran_pdf(file_name , header):
     
     output2 = sum_last_row.values.tolist()
     html_data = open_html()
-    headers = ['ردیف','نام پیمانکار','شماره چک' , 'مبلغ چک','تاریخ چک','توضیحات']
+    headers=['1','2','3','4','5','6']
     header_contents = [header['right'], header['middle'] , header['left']]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
     page_names = add_content(html_data , output2)
     pdf_names = add_page_counters(page_names)
-    pdf_names = make_pdfs(page_names)
+    pdf_names = make_pdfs(page_names,'a4','temp/style_a4_1.css')
     print('--------------------------------------------------------------------')
     print(pdf_names)
     combine_pdfs(pdf_names,file_name)

@@ -196,3 +196,10 @@ img {
     display: table-cell;
     max-width: 80%;
 }
+
+.test{
+    /*max-height: 950px;*/
+    width: 550px;
+    background: #004F7F !important;;
+    max-width: 200px;
+}

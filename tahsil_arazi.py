@@ -12,6 +12,8 @@ from writers import *
 import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
+
+
 def make_arazi_pdf():
     URL = 'http://api.daricbot.ir/arazi'
     data = requests.get(url = URL)
@@ -20,7 +22,7 @@ def make_arazi_pdf():
     
     data = pd.DataFrame(data)
     headers = ['ردیف','شرح','مبلغ درخواستی نفتانیر','مبلغ مورد تاییدامور حقوقی','تاریخ تایید امور حقوقی','مبلغ تایید مالی','تاریخ تاییدامور مالی']
-    header_contents = ['گزارش تحصیل اراضی', '  ' , 'گذارش گیری در تاریخ: بهمن 1398']
+    header_contents = ['گزارش تحصیل اراضی', '  ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     del(data[7])
     del(data[8])
     
@@ -40,7 +42,12 @@ def make_arazi_pdf():
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a3','temp/style.css')
     #pdf_name = ' گذارش تحصیل اراضی' +' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
-    pdf_name = 'tahsil_arazi.pdf'
+    pdf_name = pdf_name='tahsil_arazi___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+
     combine_pdfs(pdf_names,pdf_name)
+
+
+#make_arazi_pdf()
+
 
 

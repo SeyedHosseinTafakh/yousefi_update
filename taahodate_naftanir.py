@@ -13,10 +13,11 @@ import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
 
-def make_tahodat_naftanir_pdf(file_name,headers):
-    
-    #TODO:: have to add shomare_ghest number in this function
-    URL = ' http://api.daricbot.ir/taahodat_pardakht_sherkat_naftanir'
+def make_tahodat_naftanir_pdf(id_ghest='None'):
+    if id_ghest=='None':
+        URL = ' http://api.daricbot.ir/taahodat_pardakht_sherkat_naftanir'
+    else:
+        URL = 'http://api.daricbot.ir/taahodat_pardakht_sherkat_naftanir?id_ghest='+id_ghest
     data = requests.get(url = URL)
     data = data.json()
     data = pd.DataFrame(data)
@@ -45,17 +46,18 @@ def make_tahodat_naftanir_pdf(file_name,headers):
     output = output.values.tolist()
     html_data = open_html()
     headers = ['ردیف','شماره قسط','تاریخ' , 'شرح','مبلغ دلاری','توضیحات']
-    header_contents = ['right' , 'middle', 'left']
+    header_contents = ['تعهدات پرداخت شرکت نفتانیر' , ' ', JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
     page_names = add_content(html_data , output)
     pdf_names = add_page_counters(page_names)
-    pdf_names = make_pdfs(page_names)
-    combine_pdfs(pdf_names,'test_taahodat_naftanir.pdf')
-    
+    pdf_names = make_pdfs(page_names,options='a4',css_path='temp/style_a4_2.css')
+    file_name='taahodate_naftanir____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    combine_pdfs(pdf_names,file_name)
+
 #testing    
-make_tahodat_naftanir_pdf('test_taahodat_naftanir.pdf' , ['left','middle','right'])
+#make_tahodat_naftanir_pdf()
     
     
     

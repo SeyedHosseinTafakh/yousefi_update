@@ -14,9 +14,9 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_pishraft_fiziki_pdf(id_gostare):
+def make_pishraft_fiziki_pdf(id_gostare ):
     #id_gostare = '1'
-    URL = 'http://api.daricbot.ir/gostare'
+    URL = 'https://api.daricbot.ir/gostare'
     data = requests.get(url = URL)
     data = data.json()
     
@@ -28,7 +28,6 @@ def make_pishraft_fiziki_pdf(id_gostare):
      'margin-left': '0in',
      'orientation' : 'portrait',
       }
-    
     gostare_data = pd.DataFrame(data['gostareha'])
     pishraft_data = pd.DataFrame(data['pishraft'])
     
@@ -44,7 +43,9 @@ def make_pishraft_fiziki_pdf(id_gostare):
     jadval_info.append(gostare_info[0][2])
     jadval_info.append(str(pishraft_info[2].astype(float).sum()))
     jadval_info.append(str(pishraft_info[2].astype(float).sum() -float(gostare_info[0][2])))
-    
+    jadval_info[1] = enToFarsiPandas2(jadval_info[1])
+    jadval_info[2] = enToFarsiPandas2(jadval_info[2])
+    jadval_info[3] = enToFarsiPandas2(jadval_info[3])
     
     del(pishraft_info[0])
     del(pishraft_info[1])
@@ -85,7 +86,7 @@ def make_pishraft_fiziki_pdf(id_gostare):
     output = pishraft_re.values.tolist()
     #---------------------------------------------------
     #pdf_name = ' گذارش پیشرفت فیزیکی' +' '+gostare_info[0][1]+' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
-    pdf_name='pishraft_fiziki.pdf'
+    pdf_name='pishraft_fiziki___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     #---------------------------------------------------
     html = open_html()
     html = add_div_and_seprator_for_info(html)
@@ -119,7 +120,7 @@ def make_pishraft_fiziki_pdf(id_gostare):
     return True
 
 
-
+#make_pishraft_fiziki_pdf(1)
 
 
 

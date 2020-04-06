@@ -89,7 +89,7 @@ html_data = add_headers(html_data , headers)
 #todo :: have to add css editor and end this section
 page_names = add_content(html_data , output)
 pdf_names = add_page_counters(page_names)
-pdf_names = make_pdfs(page_names)
+pdf_names = make_pdfs(page_names,options='a4',css_path='temp/style_a4__jaraem_taakhir_dar_bahrebardari.css')
 combine_pdfs(pdf_names,'test_jaraem_taakhir_dar_bahrebardari.pdf')
 
 

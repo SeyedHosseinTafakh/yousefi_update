@@ -54,9 +54,11 @@ for data_point in data:
     x.append(truncate(data[data_point]['maliyat_bara_arzesh_afzoode_sakhte_pooshesh'],2))
     output.append(x)
     i +=1
-        
+
+
+
 sum_last_row = pd.DataFrame(output,dtype='float64')
-sum_last_row = sum_last_row.append(pd.Series() , ignore_index=True)
+#sum_last_row = sum_last_row.append(pd.Series() , ignore_index=True)
 len_od_df = len(sum_last_row)-1
 
 sum_last_row.loc[len_od_df,0]= 'کل'
@@ -78,6 +80,8 @@ sum_last_row[3] = sum_last_row[3].astype(str).map(enToFarsiPandas2)
 sum_last_row[4] = sum_last_row[4].astype(str).map(enToFarsiPandas2).map(rv_zeros_af_dot)
 sum_last_row[5] = sum_last_row[5].astype(str).map(enToFarsiPandas2).map(rv_zeros_af_dot)
 sum_last_row[6] = sum_last_row[6].astype(str).map(enToFarsiPandas2)
+sum_last_row[7] = sum_last_row[7].astype(str).map(enToFarsiPandas2)
+
 for i in range(9,15):
     sum_last_row[i] = sum_last_row[i].astype(str).map(enToFarsiPandas2).map(rv_zeros_af_dot)
 for i in range(14,20):
@@ -87,7 +91,9 @@ for i in range(14,20):
 
 
 output2 = sum_last_row.values.tolist()
-headers = ['ردیف','جمع ریالی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی','هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و\n سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
+#headers = ['ردیف','جمع ریالی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی','هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و\n سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
+headers = ['ردیف','جمع ریالی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی','هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات \n (ورق)','مالیات  (ساخت و پوشش)']
+
 
 header_contents = ['گزارش تراز مالی-لوله های 56(نتایج)', 'قسط شماره یکم آذر ماه 1396' , 'گذارش گیری در تاریخ: بهمن 1398']
 html_data = open_html()
@@ -98,9 +104,11 @@ html_data = add_headers(html_data , headers)
 html_data = add_content(html_data , output2)
 page_names = add_page_counters(html_data)
 
-pdf_names = make_pdfs(page_names,css_path='resource/style.css')
+pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
 combine_pdfs(pdf_names,'testing30inch.pdf')
-return True
+
+
+
 
 make_56_pdf('testing.pdf')
 

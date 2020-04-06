@@ -38,7 +38,7 @@ if platform.system() =='Linux':
     config = pdfkit.configuration()
 else:
     #---------------------------windows-------------------------------
-    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    path_wkhtmltopdf = r'wkhtmltox\bin\wkhtmltopdf.exe'
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 #options = {
 #    'page-size': 'A3',
@@ -94,11 +94,12 @@ def write_html_file(file_name , html_file):
     file.write(html_file)
     file.close()
 
-def add_content(html_original , contents , first_page_row_numbers=22):
+def add_content(html_original , contents , first_page_row_numbers=22,second_page_numbers=22):
     contents_data = ""
     i = 0
     pages = []
     for list_contents in contents:
+        
         if i ==first_page_row_numbers :
             
             html = html_original.split('<tbody>')
@@ -108,7 +109,7 @@ def add_content(html_original , contents , first_page_row_numbers=22):
             write_html_file(page_name , html)
             contents_data = ""
             i = 0
-            first_page_row_numbers = 22
+            first_page_row_numbers = second_page_numbers
             continue
         '''if i ==25 and len(pages) != 0:
             html = html_original.split('<tbody>')

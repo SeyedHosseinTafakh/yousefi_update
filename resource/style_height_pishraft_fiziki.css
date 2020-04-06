@@ -108,7 +108,7 @@ html{
 
 .col-container {
     display: table;
-    width: 1000px;
+    width: 950px;
     border-radius: 8px;
     background-color: #fff;
     margin-right: 0.1in;
@@ -116,7 +116,7 @@ html{
 }
 .col {
   display: table-cell;
-    width:1000px;
+    /*width: 1000px;*/
   /*padding: 16px;*/
 }
 
@@ -130,7 +130,7 @@ html{
 .white_background{
 	position: absolute;
 	background: #fff;
-	width: 1000px;
+	width: 950px;
 	/*height: 1065px;*/
     height: 850px;
     max-height: 90%;
@@ -183,7 +183,7 @@ img {
     border-radius: 8px;
     background-color: #fff;
     margin-right: 0.1in;
-    width: 1000px;
+    width: 950px;
 }
 
 .labels{

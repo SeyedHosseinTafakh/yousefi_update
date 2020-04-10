@@ -157,14 +157,14 @@ def add_header_document(html , contents):
     html = html[0] + contents_data +html[1]
     return html
 
-def add_page_counters(pages,numbers = [],pusher=0):
+def add_page_counters(pages,numbers = [],pusher=0,slider=''):
     #path = pathlib.Path().absolute().__str__()
     x = []
     if len(numbers) ==0:
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
         html = open_html('temp/'+page)
-        html = html.replace('page_counter',str(number+pusher))
+        html = html.replace('page_counter',str(number+pusher)+slider)
         write_html_file(page , html)
         x.append(page)
     return x

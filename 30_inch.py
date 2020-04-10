@@ -82,6 +82,7 @@ def make_56_pdf():
     sum_last_row[5] = sum_last_row[5].astype(str).map(enToFarsiPandas2).map(rv_zeros_af_dot)
     sum_last_row[6] = sum_last_row[6].astype(str).map(enToFarsiPandas2)
     sum_last_row[7] = sum_last_row[7].astype(str).map(enToFarsiPandas2)
+    sum_last_row[8] = sum_last_row[8].astype(str).map(enToFarsiPandas2)
     
     for i in range(9,15):
         sum_last_row[i] = sum_last_row[i].astype(str).map(enToFarsiPandas2).map(rv_zeros_af_dot)

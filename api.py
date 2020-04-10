@@ -59,11 +59,11 @@ def index():
     #return "HELo world from linux"
 
 
-@app.route('/download',methods=['GET'])
-def download():
-    file_name = request.args.get('file_name')
-    path = "pdfs/"+file_name
-    return send_file(path, as_attachment=True)
+# @app.route('/download',methods=['GET'])
+# def download():
+#     file_name = request.args.get('file_name')
+#     path = "pdfs/"+file_name
+#     return send_file(path, as_attachment=True)
 
 
 #------------------------------------------peymankaran
@@ -102,4 +102,4 @@ def peymankaran():
     return "OK"
 
 
-app.run(port=8080)
+app.run(port=50000)

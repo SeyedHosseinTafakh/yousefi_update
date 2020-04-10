@@ -73,9 +73,9 @@ def peymankaran():
         return 'error just json format'
     args = request.get_json()
     if args['type'] == 'pishraft_fiziki':
-        if not 'id_gostare' in args:
+        if not 'id_ghest' in args:
             return 'error : id_gosrare required'
-        make_pishraft_fiziki_pdf(args['id_gostare'])
+        make_pishraft_fiziki_pdf(args['id_ghest'])
     if args['type'] =='tahsil_arazi':
         make_arazi_pdf()
     if args['type'] =='compressors':

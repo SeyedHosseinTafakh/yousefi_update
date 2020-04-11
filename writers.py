@@ -109,7 +109,7 @@ def add_content(html_original , contents , first_page_row_numbers=22,second_page
             write_html_file(page_name , html)
             contents_data = ""
             i = 0
-            first_page_row_numbers = second_page_numbers
+            first_page_row_numbers = second_page_numbers+1
             continue
         '''if i ==25 and len(pages) != 0:
             html = html_original.split('<tbody>')

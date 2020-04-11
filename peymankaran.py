@@ -58,7 +58,7 @@ def make_peymankaran_pdf():
 #make_peymankaran_pdf('peymankaran.pdf',{'right':'گذارش پیمانکاران', 'middle':' ' , 'left':'اسفند 1398'})
 
 
-
+make_peymankaran_pdf()
 
 
 

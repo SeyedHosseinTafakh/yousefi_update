@@ -164,7 +164,7 @@ def add_page_counters(pages,numbers = [],pusher=0,slider=''):
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
         html = open_html('temp/'+page)
-        html = html.replace('page_counter',str(number+pusher)+slider)
+        html = html.replace('page_counter',enToFarsiPandas2(str(number+pusher)+slider))
         write_html_file(page , html)
         x.append(page)
     return x
@@ -371,8 +371,8 @@ def change_gostare_id_to_name(data):
 '9':'تاسیسات تقویت فشار دیلم',      
 '10':'تاسیسات تقویت فشار بیدبلند',      
          }
-    return x[data]
-
-
+    if data in x:
+        return x[data]
+    return data
 
         

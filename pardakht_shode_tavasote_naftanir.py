@@ -44,7 +44,7 @@ def make_pardakht_shode_tavasote_naftanir():
     
     
     headers = ['ردیف','تاریخ پرداخت','مبلغ دریافتی','شماره سند دریافت','پرداختی بابت','توضیحات']
-    header_contents = ['چرداخت شده توسط نفتانیر' , ' ', JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['پرداخت شده توسط نفتانیر' , ' ', JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     data[0] = pd.Series(list(range(1,len(data)+1)))
     data[0] = data[0].astype(str).map(enToFarsiPandas)

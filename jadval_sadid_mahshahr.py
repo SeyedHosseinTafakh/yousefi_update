@@ -13,7 +13,7 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 def make_jadval_sadid_mahshahr():
-    URL = 'http://api.daricbot.ir/jadval_loole_sazi_sadid?time_now=1396-9-17'
+    URL = 'http://api.daricbot.ir/jadval_loole_sazi_sadid'
     
     r = requests.get(url = URL)
     data = r.json()
@@ -35,25 +35,26 @@ def make_jadval_sadid_mahshahr():
     
     
     
+    sum_last_row=[ 'کل',x[1].astype('float64').sum(),'',x[3].astype('float64').sum(),'','']
+    sum_last_row=pd.DataFrame(sum_last_row).T
     
-    
-    x[0][x.shape[0]-1] = 'کل'
-    
+    x = pd.concat([x,sum_last_row])
     
     
     
     x[0]=x[0].astype(str).apply(enToFarsiPandas2)
     x[1]=x[1].astype(str).apply(enToFarsiPandas2)
     x[2]=x[2].astype(str).apply(enToFarsiPandas2)
-    x[3]=x[3].astype(float).abs().astype(str).apply(enToFarsiPandas)
-    x[4]=x[4].astype(float).abs().astype(str).apply(enToFarsiPandas)
+    x[3]=x[3].astype(str).apply(enToFarsiPandas)
+    x[4]=x[4].astype(str).apply(enToFarsiPandas)
     
     x[5]=x[5].astype(str).apply(enToFarsiPandas2)
     
     
     output2 = x.values.tolist()
     html_data = open_html()
-    headers=['ردیف','تاریخ','تعهد به پرداخت','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
+    headers=['ردیف','تعهد به پرداخت','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
+    headers.append('تاریخ')
     header_contents = ['گذارش جدول لوله های سدید ماهشهر',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     

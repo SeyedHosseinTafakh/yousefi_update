@@ -22,7 +22,7 @@ from PyPDF2 import PdfFileMerger
 
 
 
-def make_56_pdf():    
+def make_30_pdf():    
     URL = 'http://api.daricbot.ir/pipeLinesF?inch36=1'
     r = requests.get(url = URL) 
     data = dict(r.json())

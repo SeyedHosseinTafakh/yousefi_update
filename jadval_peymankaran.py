@@ -66,7 +66,7 @@ def make_jadval_peymankaran():
     
     output =y.values.tolist()
     html_data = open_html()
-    headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','جریمه','کل مطالبات','توضیحات']
+    headers=['ردیف','شرح','توضیحات','تاریخ','مبلغ','جریمه پرداخت نشده دوره قبل','جریمه','کل مطالبات']
     header_contents = ['نتایج کلی پیمانکاران','',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     

@@ -15,38 +15,28 @@ from PyPDF2 import PdfFileMerger
 
 
 def make_pishraft_fiziki_pdf(id_ghest):
-    #id_gostare = '1'
-    id_ghest='16'
+#id_gostare = '1'
+#id_ghest=16
     URL = 'https://api.daricbot.ir/gostare'
     data = requests.get(url = URL)
     data = data.json()
     
-    #gostare_data = pd.DataFrame(data['gostareha'])
     pishraft_data = pd.DataFrame(data['pishraft'])
     
     
-    #gostare_info=gostare_data.loc[gostare_data[0]==int(id_gostare)]
-    pishraft_info = pishraft_data.loc[pishraft_data[4]==int(id_ghest)]
+    pishraft_info = pishraft_data.loc[pishraft_data[4]<=int(id_ghest)]
     
-    labels = ['نام گستره :','وزن گستره از کل :','درصد تحقق یافته :','درصد باقی مانده :']
-    #gostare_info = gostare_info.values.tolist()
-    
-    #jadval_info = []
-    #jadval_info.append(gostare_info[0][1])
-    #jadval_info.append(gostare_info[0][2])
-    #jadval_info.append(str(pishraft_info[2].astype(float).sum()))
-    #jadval_info.append(str(pishraft_info[2].astype(float).sum() -float(gostare_info[0][2])))
-    #jadval_info[1] = enToFarsiPandas2(jadval_info[1])
-    #jadval_info[2] = enToFarsiPandas2(jadval_info[2])
-    #jadval_info[3] = enToFarsiPandas2(jadval_info[3])
-    
-    pishraft_info[1] = pishraft_info[1].astype(str).apply(change_gostare_id_to_name)
+    pishraft_info = pishraft_info.reset_index()
+    x = pishraft_info[1].astype(str).apply(change_gostare_id_to_name)
+    pishraft_info[1] = x
     pishraft_info[0] = range(1,pishraft_info.shape[0]+1)
-    
+    #del(pishraft_info['level_0'])
     del(pishraft_info[6])
+    del(pishraft_info['index'])
     del(pishraft_info[7])
     #del(pishraft_info[0])
     #del(pishraft_info[1])
+    labels = ['نام گستره :','وزن گستره از کل :','درصد تحقق یافته :','درصد باقی مانده :']
     
     #pishraft_re = []
     #pishraft_re.append(list(range(1,pishraft_info.shape[0]+1)))
@@ -97,38 +87,21 @@ def make_pishraft_fiziki_pdf(id_ghest):
     #html = add_labels(html , labels)
     #html = add_spans(html , jadval_info)
     time = JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
-    headers = ['ردیف','نام گستره','درصد تحقق یافته','تاریخ','درصد تحقق یافته','شرح']
-    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(id_ghest)
+    headers = ['ردیف','نام گستره','درصد تحقق یافته','تاریخ','شماره قسط','شرح']
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
     header_contents = ['گذارش پیشرفت فیزیکی' , shomare_ghest, time]
     
     html_data = add_header_document(html , header_contents)
     html_data = add_headers(html_data , headers)
     page_names = add_content(html_data , output)
     pdf_names = add_page_counters(page_names)
-    pdf_names=make_pdfs(page_names,'a4','temp/style_a4_2.css')
+    pdf_names=make_pdfs(page_names,'a3','resource/style.css')
     combine_pdfs(pdf_names,pdf_name)
-    '''first_pdf_name = make_pdfs([page_names[0]],'a4','resource/style_height_pishraft_fiziki.css')
-    if baghi_jadval.shape[0]-pishraft_re.shape[0]>0:
-        output = pd.DataFrame(baghi_jadval.iloc[17:]).values.tolist()
-        html = open_html()
-        html_data = add_header_document(html , header_contents)
-        html_data = add_headers(html_data , headers)
     
-        page_names = add_content(html_data , output)
-        pdf_names = pdf_names+add_page_counters(page_names,pusher=1)
-        #first_pdf_name = make_pdfs([page_names[0]],'resource/style_height.css')
-        del(pdf_names[0])
-        pdf_names=make_pdfs(page_names,'a4','temp/style_a4_1.css')
-    
-        combine_pdfs(first_pdf_name+pdf_names,pdf_name)
-    else:
-        del(pdf_names[0])
-        combine_pdfs(first_pdf_name,pdf_name)
-        '''
     return True
 
 
-#make_pishraft_fiziki_pdf(1)
+#make_pishraft_fiziki_pdf(16)
 
 
 

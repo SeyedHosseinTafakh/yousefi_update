@@ -24,9 +24,10 @@ from jadval_sadid_mahshahr import *
 from taahodat_mohandesi import *
 from taahodate_naftanir import *
 from jaraem_takhir_dar_bahre_bardari import *
-
-
-
+from natayej_koli import *
+from a_56_inch import *
+from a_30_inch import *
+from jadval_peymankaran import *
 
 
 app = flask.Flask(__name__)
@@ -97,8 +98,17 @@ def peymankaran():
         make_tahodat_mohandesi_pdf()
     if args['type'] == 'taahodate_naftanir':
         make_tahodat_naftanir_pdf()
-    if args['type'] =='jaraem_takhir_dar_bahre_bardari':
-        make_jaraem_takhir_dar_bahre_bardari(id_gostare=args['id_gostare'] , id_ghest = args['id_ghest'])
+    #if args['type'] =='jaraem_takhir_dar_bahre_bardari':
+    #    make_jaraem_takhir_dar_bahre_bardari(id_gostare=args['id_gostare'] , id_ghest = args['id_ghest'])
+    if args['type']=='natayej_koli':
+        make_natayej_koli()
+    if args['type']=='56_inch':
+        make_56_pdf()
+    if args['type']=='30_inch':
+        make_30_pdf()
+    if args['type']=='jadval_peymankaran':
+        make_jadval_peymankaran()
+    
     return "OK"
 
 

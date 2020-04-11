@@ -22,13 +22,13 @@ def make_peymankaran_pdf():
     sum_last_row[0] = list(range(1,len(sum_last_row)+1))
     
     #sum_last_row = sum_last_row.append(pd.Series() , ignore_index=True)
-    len_od_df = len(sum_last_row)-1
+    len_od_df = len(sum_last_row)+1
     sum_last_row = sum_last_row.fillna(0)
-    sum_last_row[0] = sum_last_row[[0]].applymap(np.int64)
+    #sum_last_row[0] = sum_last_row[[0]].applymap(np.int64)
     
     sum_last_row.loc[len_od_df,0] = 'کل'
     sum_last_row.loc[len_od_df,3] = truncate(sum_last_row[3].sum(skipna=True))
-    sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas2)
+    sum_last_row[0] = sum_last_row[0].astype(str).map(enToFarsiPandas2).apply(rv_zeros_af_dot)
     
     sum_last_row[3] = sum_last_row[3].map(add_commas).map(rv_zeros_af_dot).map(enToFarsiPandas2)
     sum_last_row[2] = sum_last_row[2].map(add_commas)
@@ -52,13 +52,13 @@ def make_peymankaran_pdf():
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     combine_pdfs(pdf_names,file_name)
-    
+
 
 #testingnkaran_pdf('peymankaran.pdf',{'right':'گﺫﺍﺮﺷ پیﻡﺎﻧکﺍﺭﺎﻧ', 'middle':' ' , 'left':'ﺎﺴﻔﻧﺩ 1398'})
 #make_peymankaran_pdf('peymankaran.pdf',{'right':'گذارش پیمانکاران', 'middle':' ' , 'left':'اسفند 1398'})
 
 
-make_peymankaran_pdf()
+#make_peymankaran_pdf()
 
 
 

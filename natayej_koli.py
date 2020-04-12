@@ -182,7 +182,11 @@ def make_natayej_koli():
     
     file_name='natayej_koli____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     
-    combine_pdfs(pdf_names,file_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گذارش نتایج نهایی'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
+
     return True
 
-
+#make_natayej_koli()

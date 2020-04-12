@@ -80,7 +80,7 @@ def make_pishraft_fiziki_pdf(id_ghest):
     output = pishraft_info.values.tolist()
     #---------------------------------------------------
     #pdf_name = ' گذارش پیشرفت فیزیکی' +' '+gostare_info[0][1]+' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
-    pdf_name='pishraft_fiziki___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    #pdf_name='pishraft_fiziki___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     #---------------------------------------------------
     html = open_html()
     html = add_div_and_seprator_for_info(html)
@@ -96,7 +96,19 @@ def make_pishraft_fiziki_pdf(id_ghest):
     page_names = add_content(html_data , output)
     pdf_names = add_page_counters(page_names)
     pdf_names=make_pdfs(page_names,'a3','resource/style.css')
-    combine_pdfs(pdf_names,pdf_name)
+    #combine_pdfs(pdf_names,pdf_name)
+    
+    
+    
+    
+    file_name ='pishraft_fiziki___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+
+    onvan='گذارش پیشرفت فیزیکی'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+
+    
     
     return True
 

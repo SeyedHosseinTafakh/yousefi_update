@@ -44,10 +44,13 @@ def make_arazi_pdf():
     #pdf_name = ' گذارش تحصیل اراضی' +' '+ JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')+".pdf"
     pdf_name = pdf_name='tahsil_arazi___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
 
-    combine_pdfs(pdf_names,pdf_name)
+    #combine_pdfs(pdf_names,pdf_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گذارش تحصیل اراضی'
+    combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 
-#make_arazi_pdf()
+make_arazi_pdf()
 
 
 

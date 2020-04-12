@@ -57,6 +57,8 @@ def make_pardakht_shode_tavasote_naftanir():
     data = data.iloc[:20]
     output = data.values.tolist()
     
+    onvan='پرداخت شده توسط نفتانیر'
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     file_name='pardakht_shote_tavasot_naftanir____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     html_data = add_header_document(html , header_contents)
     html_data = add_headers(html_data , headers)
@@ -75,11 +77,13 @@ def make_pardakht_shode_tavasote_naftanir():
         del(pdf_names[0])
         pdf_names=make_pdfs(page_names,options='a5',css_path='resource/style_pardakh_shode_tavasote_naftanir.css')
     
-        combine_pdfs(first_pdf_name+pdf_names,file_name)
+        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
     else:
         del(pdf_names[0])
-        combine_pdfs(first_pdf_name,file_name)
-    print(file_name)
+        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
+    
 
 #make_pardakht_shode_tavasote_naftanir()
 

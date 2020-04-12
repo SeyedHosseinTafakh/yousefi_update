@@ -15,12 +15,8 @@ from PyPDF2 import PdfFileMerger
 
 
 
-def make_jaraem_takhir_dar_bahre_bardari(id_gostare,id_ghest):
-    gostare_id = '6'
-    
-    id_ghest = '16'
-    
-    
+def make_jaraem_takhir_dar_bahre_bardari(id_ghest):
+
     x=[]
     
     for i in range(1,11):
@@ -67,18 +63,25 @@ def make_jaraem_takhir_dar_bahre_bardari(id_gostare,id_ghest):
     
     data_jadval = y.values.tolist()
     headers = ['ردیف','شرح','شماره قسط' , 'تاریخ بهره برداری تجاری','درصد مشمول جریمه','مبلغ جریمه','نام گستره']
-    #ghest_number = "شماره قسط"+id_ghest
-    header_contents = ['جرائم تاخیر در بهره برداری' , ' ', handle_month(id_ghest)]
+    ghest_number = "شماره قسط"+id_ghest
+    ghest_number = enToFarsiPandas2(ghest_number)
+    header_contents = ['جرائم تاخیر در بهره برداری' , ghest_number, JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html = add_header_document(html , header_contents)
     
     html = add_headers(html , headers)
     
     page_names = add_content(html , data_jadval)
     pdf_names = add_page_counters(page_names)
-    pdf_names = make_pdfs(page_names,options='a3',css_path='resource/style.css')
+    pdf_names = make_pdfs(page_names,options='a3',css_path='resource/style_2.css')
     file_name='jaraem_takhir_dar_bahre_bardari____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    combine_pdfs(pdf_names,file_name)
-    print(file_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='جرائم تاخیر در بهره برداری'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+
+    
+    return True
+
+#make_jaraem_takhir_dar_bahre_bardari(str(16))
 
 
 

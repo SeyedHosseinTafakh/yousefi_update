@@ -28,6 +28,9 @@ from natayej_koli import *
 from a_56_inch import *
 from a_30_inch import *
 from jadval_peymankaran import *
+from jadval_arazi import *
+
+
 
 
 app = flask.Flask(__name__)
@@ -45,19 +48,9 @@ cors = CORS(api, resources={r"": {"origins": "*"}})
 
 @app.route('/', methods=['GET'])
 def index():
-    path = path = pathlib.Path().absolute().__str__()
-    #os.chdir(path+"/pdfs/")
-    file_names = []
-    for file in glob.glob("pdfs/*.pdf"):
-                
-        if platform.system() =='Linux':
-            
-            file=file.replace('pdfs/','')
-        else:
-            file = file.replace('pdfs\\','')
-        file_names.append(file)
-    return jsonify(file_names)
-    #return "HELo world from linux"
+    data = pd.read_csv('data.csv')
+    data = data.to_json()
+    return data
 
 
 # @app.route('/download',methods=['GET'])
@@ -83,11 +76,9 @@ def peymankaran():
         make_torbocompresssor_pdf()
     if args['type'] =='pardakht_naftanir':
         make_pardakht_shode_tavasote_naftanir()
-    if args['type'] == 'tahsil_arazi':
-        make_arazi_pdf()
+    
     if args['type'] =='peymankaran':
         make_peymankaran_pdf()
-    #todo :: add peymankaran_jadval
     if args['type']=='jadval_56':
         make_jadval_56()
     if args['type'] =='jadval_30':
@@ -95,11 +86,13 @@ def peymankaran():
     if args['type'] == 'jadval_sadid_mahshahr':
         make_jadval_sadid_mahshahr()
     if args['type'] == 'taahodat_mohandesi':
-        make_tahodat_mohandesi_pdf()
+        if not 'id_ghest' in args:
+             return 'error : id_gosrare required'
+        make_tahodat_mohandesi_pdf(args['id_ghest'])
     if args['type'] == 'taahodate_naftanir':
-        make_tahodat_naftanir_pdf()
-    #if args['type'] =='jaraem_takhir_dar_bahre_bardari':
-    #    make_jaraem_takhir_dar_bahre_bardari(id_gostare=args['id_gostare'] , id_ghest = args['id_ghest'])
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_tahodat_naftanir_pdf(args['id_ghest'])
     if args['type']=='natayej_koli':
         make_natayej_koli()
     if args['type']=='56_inch':
@@ -108,8 +101,14 @@ def peymankaran():
         make_30_pdf()
     if args['type']=='jadval_peymankaran':
         make_jadval_peymankaran()
-    
+    if args['type']=='jaraem_takhir_dar_bahre_bardari':
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_jaraem_takhir_dar_bahre_bardari(args['id_ghest'])
+    if args['type']=='jadval_arazi':
+        jadval_arazi_pdf()
     return "OK"
+
 
 
 app.run(port=50000)

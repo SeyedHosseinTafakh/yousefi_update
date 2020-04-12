@@ -15,7 +15,7 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_tahodat_mohandesi_pdf(file_name , headers):
+def jadval_arazi_pdf():
 
     URL = 'http://api.daricbot.ir/jadvalArazi'
     data = requests.get(url = URL)
@@ -47,14 +47,15 @@ def make_tahodat_mohandesi_pdf(file_name , headers):
     page_names = add_page_counters(html_data)
     
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
-    
-    file_name='torbo_copresor____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    
-    combine_pdfs(pdf_names,file_name)
+    file_name ='tahsil_arazi_30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گذارش تحصیل اراضی'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
     return True
 
 
-
+#jadval_arazi_pdf()
 
 
 

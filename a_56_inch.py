@@ -14,7 +14,7 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_56_pdf(file_name):
+def make_56_pdf():
 
     URL = 'https://api.daricbot.ir/pipeLinesF'
     r = requests.get(url = URL) 
@@ -116,10 +116,14 @@ def make_56_pdf(file_name):
     
     file_name ='taraz_mali_56___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
-    combine_pdfs(pdf_names,file_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گزارش تراز مالی لوله های 56'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
+
 
     return True
 
-#make_56_pdf('testing.pdf')
+#make_56_pdf()
 
 

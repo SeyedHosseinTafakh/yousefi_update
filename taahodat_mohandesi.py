@@ -56,10 +56,13 @@ def make_tahodat_mohandesi_pdf(id_ghest='None'):
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,options ='a4',css_path='temp/style_a4_2.css')
     file_name='taahodat_mohandesi____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    combine_pdfs(pdf_names,file_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='تعهدات پرداخت شرکت مهندسی و توسعه گاز ایران'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    
 
 #testing    
-#make_tahodat_mohandesi_pdf()
+#make_tahodat_mohandesi_pdf(str('5'))
     
     
     

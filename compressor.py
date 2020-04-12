@@ -62,9 +62,17 @@ def make_torbocompresssor_pdf():
     pdf_names = make_pdfs(page_names,options='a4',css_path='temp/style_a4_2.css')
     file_name='torbo_copresor____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     
-    combine_pdfs(pdf_names,file_name)
+#    combine_pdfs(pdf_names,file_name)
+    
+    
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گذارش توربو کمپرسور ها'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
     return True
 
 
+
+#make_torbocompresssor_pdf()
 
 

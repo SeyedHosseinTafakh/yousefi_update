@@ -75,10 +75,13 @@ def make_jadval_36():
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='jadval30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    combine_pdfs(pdf_names,file_name)
+    tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    onvan='گزارش جدول لوله های 30 اینچ'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+
     return True
 
 
 
-
+#make_jadval_36()
 

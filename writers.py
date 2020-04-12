@@ -18,7 +18,7 @@ from datetime import timedelta
 from khayyam import JalaliDate, JalaliDatetime
 import datetime
 import calendar
-
+import pandas as pd
 import platform
 
 from khayyam import *
@@ -169,7 +169,7 @@ def add_page_counters(pages,numbers = [],pusher=0,slider=''):
         x.append(page)
     return x
 
-def combine_pdfs(pdfs,result_name):
+def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     print('i dont fucking know')
     path = pathlib.Path().absolute().__str__()
     merger = PdfFileMerger()
@@ -179,8 +179,18 @@ def combine_pdfs(pdfs,result_name):
         merger.append(open(pdf,'rb'),import_bookmarks=False)
     merger.write(path+'/pdfs/'+result_name)
     merger.close()
-
-
+    csv_data=[]    
+    csv_data.append(tarikh)
+    csv_data.append(ghest_number)
+    csv_data.append(onvan)
+    csv_data.append(result_name)
+    csv = pd.DataFrame(csv_data).T
+    csv.columns=range(0,4)
+    csv_old = pd.read_csv('data.csv')
+    csv_old.columns=range(0,4)
+    csv_old = pd.concat([csv_old,csv],axis=0)
+    csv_old.to_csv('data.csv',index=False)
+    print(csv_old)
 def listToString(s):
     str1 = ""
     for ele in s:

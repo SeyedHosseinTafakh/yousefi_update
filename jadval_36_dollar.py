@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Sun Apr  5 15:32:38 2020
@@ -12,9 +13,9 @@ import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
 
-
-def make_jadval_36():
-    URL = 'http://api.daricbot.ir/jadval36'
+    
+def make_jadval_36_dollar():
+    URL = 'http://api.daricbot.ir/jadval36_dollar'
     
     r = requests.get(url = URL)
     data = r.json()
@@ -44,8 +45,8 @@ def make_jadval_36():
     sum_last_row.append(' ')
     sum_last_row.append(enToFarsiPandas2(x[3].astype(float).sum().astype(str)))
     sum_last_row.append(' ')
-    sum_last_row.append(enToFarsiPandas2(x[5].astype(float).sum().astype(str)))
     sum_last_row.append(' ')
+    sum_last_row.append(enToFarsiPandas2(x[4].astype(float).sum().astype(str)))
     sum_last_row = pd.DataFrame([sum_last_row])
     
     
@@ -66,7 +67,7 @@ def make_jadval_36():
     
     output2 = x.values.tolist()
     html_data = open_html()
-    headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
+    headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','کل مطالبات','جریمه']
     header_contents = ['گذارش جدول لوله های 30 اینچ',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
@@ -74,14 +75,14 @@ def make_jadval_36():
     page_names = add_content(html_data , output2,first_page_row_numbers=35,second_page_numbers=35)
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
-    file_name ='jadval30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    file_name ='jadval30___dollar_'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گزارش جدول لوله های 30 اینچ'
+    onvan='گزارش جدول لوله های 30 اینچ -دلاری'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    
+        #return True
 
-    return True
 
 
-
-#make_jadval_36()
+#make_jadval_36_dollar()
 

@@ -29,10 +29,12 @@ from a_56_inch import *
 from a_30_inch import *
 from jadval_peymankaran import *
 from jadval_arazi import *
-#-------have to test
+
 from model_mali import *
-
-
+from gostare_ha import *
+from natayej_koli_dollar import *
+from jadval_56_dollar import *
+from jadval_36_dollar import *
 
 app = flask.Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -108,6 +110,20 @@ def peymankaran():
         make_jaraem_takhir_dar_bahre_bardari(args['id_ghest'])
     if args['type']=='jadval_arazi':
         jadval_arazi_pdf()
+    if args['type']=='model_mali':
+        jadval_arazi_pdf()
+    if args['type']=='gostare_ha':
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        if not 'id_gostare' in args:
+            return 'error : id_gosrare required'
+        make_gostare_pdf(args['id_ghest'] , args['id_gostare'])
+    if args['type']=='natayej_koli_dollar':
+        make_natayej_koli_d()
+    if args['type']=='jadval_56_dollar':
+        make_jadval_56_dollar()
+    if args['type']=='jadval_36_dollar':
+        make_jadval_36_dollar()
     return "OK"
 
 

@@ -50,7 +50,7 @@ def make_arazi_pdf():
     combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 
-make_arazi_pdf()
+#make_arazi_pdf()
 
 
 

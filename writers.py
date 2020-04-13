@@ -99,7 +99,12 @@ def add_content(html_original , contents , first_page_row_numbers=22,second_page
     i = 0
     pages = []
     for list_contents in contents:
-        
+        a_row_list = '<tr>\n'
+        for list_entety in list_contents:
+            
+            a_row_list = a_row_list + "<td><span>"+str(list_entety)+ "</span></td>\n"
+        a_row_list= a_row_list + "</tr>\n"
+        contents_data = contents_data + a_row_list
         if i ==first_page_row_numbers :
             
             html = html_original.split('<tbody>')
@@ -109,7 +114,7 @@ def add_content(html_original , contents , first_page_row_numbers=22,second_page
             write_html_file(page_name , html)
             contents_data = ""
             i = 0
-            first_page_row_numbers = second_page_numbers+1
+            first_page_row_numbers = second_page_numbers
             continue
         '''if i ==25 and len(pages) != 0:
             html = html_original.split('<tbody>')
@@ -122,12 +127,7 @@ def add_content(html_original , contents , first_page_row_numbers=22,second_page
             i = 0
             continue'''
                 
-        a_row_list = '<tr>\n'
-        for list_entety in list_contents:
-            
-            a_row_list = a_row_list + "<td><span>"+str(list_entety)+ "</span></td>\n"
-        a_row_list= a_row_list + "</tr>\n"
-        contents_data = contents_data + a_row_list
+        
         i +=1
     html = html_original.split('<tbody>')
     html = html[0]+"<tbody>\n" +contents_data + "</tbody>\n" + html[1]
@@ -164,7 +164,7 @@ def add_page_counters(pages,numbers = [],pusher=0,slider=''):
         numbers = range(1,len(pages)+1)
     for number , page in zip(numbers , pages):
         html = open_html('temp/'+page)
-        html = html.replace('page_counter',enToFarsiPandas2(str(number+pusher)+slider))
+        html = html.replace('page_counter',enToFarsiPandas(str(number+pusher)+slider))
         write_html_file(page , html)
         x.append(page)
     return x
@@ -321,7 +321,7 @@ def add_labels(html, labels):
 def add_spans(html , spans):
     data = ['<div class="spans">\n']
     for span in spans:
-        data.append('<h5 style="text-align: right;">'+span+'</h5> \n')
+        data.append('<h5 style=" direction: ltr;">'+span+'</h5> \n')
     data= listToString(data)
     data +='</div>'
     html = html.replace('<!-- span_place_holder -->',data)

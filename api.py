@@ -29,7 +29,8 @@ from a_56_inch import *
 from a_30_inch import *
 from jadval_peymankaran import *
 from jadval_arazi import *
-
+#-------have to test
+from model_mali import *
 
 
 

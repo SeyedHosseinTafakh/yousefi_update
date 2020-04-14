@@ -75,7 +75,9 @@ def make_jadval_peymankaran():
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a3','resource/style.css')
     file_name ='jadval_peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    combine_pdfs(pdf_names,file_name)
+    onvan = '  ترازمالی –نتایج کلی –پیمانکاران'
+    tarikh = tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
+    combine_pdfs(pdf_names,file_name,ghest_number='',tarikh=tarikh , onvan=onvan)
     return True
 
 

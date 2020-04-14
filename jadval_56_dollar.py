@@ -60,7 +60,7 @@ def make_jadval_56_dollar():
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='jadval56___dollar_'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گزارش جدول لوله های 56 اینچ'
+    onvan='ترازمالی –نتایج کلی –لوله های 56اینچ دلاری'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 #    combine_pdfs(pdf_names,file_name)

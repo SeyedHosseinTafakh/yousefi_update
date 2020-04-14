@@ -51,7 +51,10 @@ cors = CORS(api, resources={r"": {"origins": "*"}})
 
 @app.route('/', methods=['GET'])
 def index():
-    data = pd.read_csv('data.csv')
+#    return "s"
+    data = pd.read_csv('data.csv').T
+    indexes = ['tarikh','shomare_ghest','onvan','esme_file']
+    data.index = indexes
     data = data.to_json()
     return data
 
@@ -71,7 +74,7 @@ def peymankaran():
     args = request.get_json()
     if args['type'] == 'pishraft_fiziki':
         if not 'id_ghest' in args:
-            return 'error : id_gosrare required'
+            return 'error : id_ghest required'
         make_pishraft_fiziki_pdf(args['id_ghest'])
     if args['type'] =='tahsil_arazi':
         make_arazi_pdf()

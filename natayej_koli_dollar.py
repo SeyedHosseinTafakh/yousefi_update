@@ -131,7 +131,7 @@ def make_natayej_koli_d():
     file_name='natayej_koli_dollar____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan=' گذارش نتایج نهایی دلاری'
+    onvan=' ترازمالی –نتایج کلی –نتایج کلی دلاری'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 

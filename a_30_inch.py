@@ -120,7 +120,7 @@ def make_30_pdf():
     file_name ='taraz_mali_30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
-    onvan='گزارش تراز مالی لوله های 30 اینچ'
+    onvan='ازمالی –نتایج کلی –لوله های 36اینچ'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 

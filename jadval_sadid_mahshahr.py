@@ -55,7 +55,7 @@ def make_jadval_sadid_mahshahr():
     html_data = open_html()
     headers=['ردیف','تعهد به پرداخت','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
     headers.append('تاریخ')
-    header_contents = ['گذارش جدول لوله های سدید ماهشهر',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش جدول لوله های سدید ماهشهر',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)

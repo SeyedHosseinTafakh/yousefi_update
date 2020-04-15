@@ -66,7 +66,7 @@ def make_torbocompresssor_pdf():
     
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گذارش توربو کمپرسور ها'
+    onvan='گزارش توربو کمپرسور ها'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
     return True

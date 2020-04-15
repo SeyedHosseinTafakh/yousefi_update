@@ -89,7 +89,7 @@ def make_pishraft_fiziki_pdf(id_ghest):
     time = JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
     headers = ['ردیف','نام گستره','درصد تحقق یافته','تاریخ','شماره قسط','شرح']
     shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
-    header_contents = ['گذارش پیشرفت فیزیکی' , shomare_ghest, time]
+    header_contents = ['گزارش پیشرفت فیزیکی' , shomare_ghest, time]
     
     html_data = add_header_document(html , header_contents)
     html_data = add_headers(html_data , headers)
@@ -105,7 +105,7 @@ def make_pishraft_fiziki_pdf(id_ghest):
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
 
-    onvan='گذارش پیشرفت فیزیکی'
+    onvan='گزارش پیشرفت فیزیکی'
     combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
     

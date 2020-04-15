@@ -46,7 +46,7 @@ def make_arazi_pdf():
 
     #combine_pdfs(pdf_names,pdf_name)
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گذارش تحصیل اراضی'
+    onvan='گزارش تحصیل اراضی'
     combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number='',onvan=onvan,tarikh=tarikh)
 
 

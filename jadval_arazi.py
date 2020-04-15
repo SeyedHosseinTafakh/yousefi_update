@@ -37,7 +37,7 @@ def jadval_arazi_pdf():
     
     output = data.values.tolist()
     headers = ['ردیف','شرح','تاریخ','تعهد به پرداخت','پرداخت شده دوره قبل','جمع کل باقی مانده '+'ماه قبل و جریمه مربوطه','جمع کل مطالبات']
-    header_contents = ['گذارش تحصیل اراضی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش تحصیل اراضی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)

@@ -52,7 +52,7 @@ def make_gostare_pdf(id_ghest , id_gostare):
     
     ghest_number = 'شماره قسط ' +' ' +enToFarsiPandas(id_ghest)
     
-    header_contents = ['گذارش گستره ها', ghest_number ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش گستره ها', ghest_number ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     html = add_header_document(html , header_contents)
     output=[]

@@ -20,7 +20,7 @@ import datetime
 import calendar
 import pandas as pd
 import platform
-
+import glob
 from khayyam import *
 from datetime import date
 JalaliDatetime(989, 3, 25, 10, 43, 23, 345453)
@@ -170,7 +170,6 @@ def add_page_counters(pages,numbers = [],pusher=0,slider=''):
     return x
 
 def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
-    print('i dont fucking know')
     path = pathlib.Path().absolute().__str__()
     merger = PdfFileMerger()
     for pdf in pdfs:
@@ -191,6 +190,8 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     csv_old = pd.concat([csv_old,csv],axis=0)
     csv_old.to_csv('data.csv',index=False)
     print(csv_old)
+    delete_pdf_files()
+
 def listToString(s):
     str1 = ""
     for ele in s:
@@ -385,4 +386,14 @@ def change_gostare_id_to_name(data):
         return x[data]
     return data
 
-        
+def delete_pdf_files():
+    for file in glob.glob('*.pdf'):
+        try:
+            deleter(file)
+        except:
+            pass
+    for file in glob.glob('temp/*.html'):
+        try:
+            deleter(file)
+        except:
+            pass

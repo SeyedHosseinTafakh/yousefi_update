@@ -44,7 +44,7 @@ def make_jadval_56():
     output2 = x.values.tolist()
     html_data = open_html()
     headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
-    header_contents = ['گذارش جدول لوله های 56 اینچ',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش جدول لوله های 56 اینچ',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)

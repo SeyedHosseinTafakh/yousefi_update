@@ -114,7 +114,7 @@ def peymankaran():
     if args['type']=='jadval_arazi':
         jadval_arazi_pdf()
     if args['type']=='model_mali':
-        jadval_arazi_pdf()
+        make_model_mali_pdf()
     if args['type']=='gostare_ha':
         if not 'id_ghest' in args:
             return 'error : id_gosrare required'

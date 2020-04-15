@@ -117,7 +117,7 @@ def make_natayej_koli_d():
     
     output = x.values.tolist()
     headers = ['ردیف','شرح','اصل مطالبات','جریمه ها','کل مطالبات']
-    header_contents = ['گذارش نتایج نهایی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش نتایج نهایی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)

@@ -36,6 +36,9 @@ from natayej_koli_dollar import *
 from jadval_56_dollar import *
 from jadval_36_dollar import *
 
+from jaraem_takhir_dar_pardakht import *
+from sadid import *
+from kala_30 import *
 app = flask.Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
@@ -127,6 +130,14 @@ def peymankaran():
         make_jadval_56_dollar()
     if args['type']=='jadval_36_dollar':
         make_jadval_36_dollar()
+    if args['type'] =='jaraem_takhir_dar_pardakht':
+        if not 'id_ghest' in args:
+            return 'error: id_ghest required'
+        make_jaraem_takhir_dar_pardakht(args['id_ghest'])
+    if args['type'] == 'sadid_mahshar':
+        make_sadid_mahshar()
+    if args['type']=='kala_30':
+        make_kala_30()
     return "OK"
 
 

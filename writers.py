@@ -187,9 +187,10 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     csv.columns=range(0,4)
     csv_old = pd.read_csv('data.csv')
     csv_old.columns=range(0,4)
-    csv_old = pd.concat([csv_old,csv],axis=0)
-    csv_old.to_csv('data.csv',index=False)
-    print(csv_old)
+    dates = csv_old[0]
+    if not tarikh in dates.tolist() and not onvan in csv_old[2].tolist():
+        csv_old = pd.concat([csv_old,csv],axis=0)
+        csv_old.to_csv('data.csv',index=False)
     delete_pdf_files()
 
 def listToString(s):

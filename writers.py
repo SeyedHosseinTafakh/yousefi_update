@@ -170,6 +170,8 @@ def add_page_counters(pages,numbers = [],pusher=0,slider=''):
     return x
 
 def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
+    result_name = result_name.split('.')
+    result_name = result_name[0]+randomString(5)+'.pdf'
     path = pathlib.Path().absolute().__str__()
     merger = PdfFileMerger()
     for pdf in pdfs:
@@ -188,9 +190,9 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     csv_old = pd.read_csv('data.csv')
     csv_old.columns=range(0,4)
     dates = csv_old[0]
-    if not tarikh in dates.tolist() and not onvan in csv_old[2].tolist():
-        csv_old = pd.concat([csv_old,csv],axis=0)
-        csv_old.to_csv('data.csv',index=False)
+    #if not tarikh in dates.tolist() and not onvan in csv_old[2].tolist():
+    csv_old = pd.concat([csv_old,csv],axis=0)
+    csv_old.to_csv('data.csv',index=False)
     delete_pdf_files()
 
 def listToString(s):

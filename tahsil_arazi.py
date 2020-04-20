@@ -14,7 +14,8 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_arazi_pdf():
+def make_arazi_pdf(id_ghest):
+    
     URL = 'http://api.daricbot.ir/arazi'
     data = requests.get(url = URL)
     data = data.json()
@@ -22,7 +23,8 @@ def make_arazi_pdf():
     
     data = pd.DataFrame(data)
     headers = ['ردیف','شرح','مبلغ درخواستی نفتانیر','مبلغ مورد تاییدامور حقوقی','تاریخ تایید امور حقوقی','مبلغ تایید مالی','تاریخ تاییدامور مالی']
-    header_contents = ['گزارش تحصیل اراضی', '  ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+    header_contents = ['گزارش تحصیل اراضی', shomare_ghest , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     del(data[7])
     del(data[8])
     
@@ -47,10 +49,10 @@ def make_arazi_pdf():
     #combine_pdfs(pdf_names,pdf_name)
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='گزارش تحصیل اراضی'
-    combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
 
-#make_arazi_pdf()
+#make_arazi_pdf(10)
 
 
 

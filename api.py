@@ -80,20 +80,34 @@ def peymankaran():
             return 'error : id_ghest required'
         make_pishraft_fiziki_pdf(args['id_ghest'])
     if args['type'] =='tahsil_arazi':
-        make_arazi_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_arazi_pdf(args['id_ghest'])
     if args['type'] =='compressors':
-        make_torbocompresssor_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_torbocompresssor_pdf(args['id_ghest'])
     if args['type'] =='pardakht_naftanir':
-        make_pardakht_shode_tavasote_naftanir()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_pardakht_shode_tavasote_naftanir(args['id_ghest'])
     
     if args['type'] =='peymankaran':
-        make_peymankaran_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_peymankaran_pdf(args['id_ghest'])
     if args['type']=='jadval_56':
-        make_jadval_56()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_jadval_56(args['id_ghest'])
     if args['type'] =='jadval_30':
-        make_jadval_36()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_jadval_36(args['id_ghest'])
     if args['type'] == 'jadval_sadid_mahshahr':
-        make_jadval_sadid_mahshahr()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_jadval_sadid_mahshahr(args['id_ghest'])
     if args['type'] == 'taahodat_mohandesi':
         if not 'id_ghest' in args:
              return 'error : id_gosrare required'
@@ -105,19 +119,29 @@ def peymankaran():
     if args['type']=='natayej_koli':
         make_natayej_koli()
     if args['type']=='56_inch':
-        make_56_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_56_pdf(args['id_ghest'])
     if args['type']=='30_inch':
-        make_30_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_30_pdf(args['id_ghest'])
     if args['type']=='jadval_peymankaran':
-        make_jadval_peymankaran()
+        if not 'id_ghest' in args:
+            return 'error : id_ghest required'
+        make_jadval_peymankaran(args['id_ghest'])
     if args['type']=='jaraem_takhir_dar_bahre_bardari':
         if not 'id_ghest' in args:
             return 'error : id_gosrare required'
         make_jaraem_takhir_dar_bahre_bardari(args['id_ghest'])
     if args['type']=='jadval_arazi':
-        jadval_arazi_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        jadval_arazi_pdf(args['id_ghest'])
     if args['type']=='model_mali':
-        make_model_mali_pdf()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_model_mali_pdf(args['id_ghest'])
     if args['type']=='gostare_ha':
         if not 'id_ghest' in args:
             return 'error : id_gosrare required'
@@ -125,19 +149,29 @@ def peymankaran():
             return 'error : id_gosrare required'
         make_gostare_pdf(args['id_ghest'] , args['id_gostare'])
     if args['type']=='natayej_koli_dollar':
-        make_natayej_koli_d()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_natayej_koli_d(args['id_ghest'])
     if args['type']=='jadval_56_dollar':
-        make_jadval_56_dollar()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_jadval_56_dollar(args['id_ghest'])
     if args['type']=='jadval_36_dollar':
-        make_jadval_36_dollar()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_jadval_36_dollar(args['id_ghest'])
     if args['type'] =='jaraem_takhir_dar_pardakht':
         if not 'id_ghest' in args:
             return 'error: id_ghest required'
         make_jaraem_takhir_dar_pardakht(args['id_ghest'])
     if args['type'] == 'sadid_mahshar':
-        make_sadid_mahshar()
+        if not 'id_ghest' in args:
+            return 'error: id_ghest required'
+        make_sadid_mahshar(args['id_ghest'])
     if args['type']=='kala_30':
-        make_kala_30()
+        if not 'id_ghest' in args:
+            return 'error: id_ghest required'
+        make_kala_30(args['id_ghest'])
     return "OK"
 
 

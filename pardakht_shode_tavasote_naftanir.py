@@ -17,7 +17,9 @@ from PyPDF2 import PdfFileMerger
 
 
     
-def make_pardakht_shode_tavasote_naftanir():
+def make_pardakht_shode_tavasote_naftanir(id_ghest):
+    id_ghest=5
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
     URL = 'http://api.daricbot.ir/pardakht_shode_tavasote_naftanir_TM'
     data = requests.get(url = URL)
     data = data.json()
@@ -60,32 +62,41 @@ def make_pardakht_shode_tavasote_naftanir():
     onvan='پرداخت شده توسط نفتانیر'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     file_name='pardakht_shote_tavasot_naftanir____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    
     html_data = add_header_document(html , header_contents)
     html_data = add_headers(html_data , headers)
-    page_names = add_content(html_data , output,first_page_row_numbers=17)
+    
+    page_names = add_content(html_data , output,first_page_row_numbers=16)
+    
     pdf_names = add_page_counters(page_names)
     first_pdf_name = make_pdfs([page_names[0]],options='a5',css_path='resource/style_pardakh_shode_tavasote_naftanir_height.css')
-    if baghi_jadval.shape[0]-data.shape[0]>0:
+    
+    
+    
+    
+    if baghi_jadval.shape[0]-16>0:    
         output = pd.DataFrame(baghi_jadval.iloc[17:]).values.tolist()
         html = open_html()
         html_data = add_header_document(html , header_contents)
         html_data = add_headers(html_data , headers)
-    
-        page_names = add_content(html_data , output,first_page_row_numbers=10)
-        pdf_names = pdf_names+add_page_counters(page_names,pusher=1)
+        
+        
+        
+        page_names = add_content(html_data , output)
+        pdf_names = add_page_counters(page_names,pusher=1)
         #first_pdf_name = make_pdfs([page_names[0]],'resource/style_height.css')
-        del(pdf_names[0])
-        pdf_names=make_pdfs(page_names,options='a5',css_path='resource/style_pardakh_shode_tavasote_naftanir.css')
+        
+        pdf_names = make_pdfs(page_names,options='a5',css_path='resource/style_pardakh_shode_tavasote_naftanir.css')
+        pdf_names = first_pdf_name + pdf_names
+        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
     
-        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
-
     else:
         del(pdf_names[0])
-        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
-
+        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
     
 
-#make_pardakht_shode_tavasote_naftanir()
+
+#make_pardakht_shode_tavasote_naftanir(5)
 
 
 

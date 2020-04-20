@@ -9,7 +9,9 @@ import pandas as pd
 from writers import *
 
 
-def make_model_mali_pdf():
+def make_model_mali_pdf(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     kole_gharardad = pd.read_csv('model_mali/01.csv')
     
     kole_gharardad.columns = range(0,5)
@@ -41,7 +43,7 @@ def make_model_mali_pdf():
     html = add_spans(html , spans)
     
     
-    header_contents = ['مدل مالی کل قرارداد', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['مدل مالی کل قرارداد', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     #test = kole_gharardad.iloc[:14]
     output= kole_gharardad.iloc[:22].values.tolist()
     
@@ -76,7 +78,7 @@ def make_model_mali_pdf():
     
     
     #----------------------------------------------------------------
-    import pandas as pd
+    
     csv_gostareha = pd.read_csv('model_mali/etelaatmodemali.csv')
     
     
@@ -89,7 +91,7 @@ def make_model_mali_pdf():
     headers = csv_gostareha.loc[:0].fillna('-').values.tolist()[0][0:5]
     headers[2]=''
     
-    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     output = gostare_1.values.tolist()
     output=gostare_1.values.tolist()
@@ -104,7 +106,7 @@ def make_model_mali_pdf():
     
     headers = csv_gostareha.loc[:0].fillna('-').values.tolist()[0][5:10]
     
-    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     output=gostare_2.values.tolist()
     html = open_html()
@@ -118,7 +120,7 @@ def make_model_mali_pdf():
     
     headers = csv_gostareha.loc[:0].fillna('-').values.tolist()[0][10:15]
     
-    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = [' مدل مالی به تفکیک گستره ها و خطوط فشار', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     output=gostare_3.values.tolist()
     html = open_html()
@@ -161,7 +163,7 @@ def make_model_mali_pdf():
     khotoote_enteghal[4]=khotoote_enteghal[4].astype(str).apply(enToFarsiPandas)
     
     
-    header_contents = ['مدل مالی خطوط انتقال', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['مدل مالی خطوط انتقال', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     #test = kole_gharardad.iloc[:14]
     output= khotoote_enteghal.iloc[:22].values.tolist()
     
@@ -227,7 +229,7 @@ def make_model_mali_pdf():
     khotoote_enteghal[4]=khotoote_enteghal[4].astype(str).apply(enToFarsiPandas)
     
     
-    header_contents = ['مدل مالی خطوط انتقال', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['مدل مالی خطوط انتقال', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     #test = kole_gharardad.iloc[:14]
     output= khotoote_enteghal.iloc[:22].values.tolist()
     

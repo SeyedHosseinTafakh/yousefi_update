@@ -13,7 +13,9 @@ import pdfkit
 import numpy as np
 from PyPDF2 import PdfFileMerger
 
-def make_jadval_peymankaran():
+def make_jadval_peymankaran(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     URL = 'http://api.daricbot.ir/jadval_peymankaran'
     data = requests.get(url = URL)
     data = data.json()
@@ -67,7 +69,7 @@ def make_jadval_peymankaran():
     output =y.values.tolist()
     html_data = open_html()
     headers=['ردیف','شرح','توضیحات','تاریخ','مبلغ','جریمه پرداخت نشده دوره قبل','جریمه','کل مطالبات']
-    header_contents = ['نتایج کلی پیمانکاران','',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['نتایج کلی پیمانکاران',shomare_ghest,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
@@ -77,7 +79,7 @@ def make_jadval_peymankaran():
     file_name ='jadval_peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     onvan = '  ترازمالی –نتایج کلی –پیمانکاران'
     tarikh = tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    combine_pdfs(pdf_names,file_name,ghest_number='',tarikh=tarikh , onvan=onvan)
+    combine_pdfs(pdf_names,file_name,ghest_number=shomare_ghest,tarikh=tarikh , onvan=onvan)
     return True
 
 

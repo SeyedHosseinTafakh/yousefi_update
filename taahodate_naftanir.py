@@ -14,6 +14,8 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 def make_tahodat_naftanir_pdf(id_ghest='None'):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     
     #if id_ghest=='None':
     URL = 'http://api.daricbot.ir/taahodat_pardakht_sherkat_naftanir'
@@ -60,7 +62,7 @@ def make_tahodat_naftanir_pdf(id_ghest='None'):
     file_name='taahodate_naftanir____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='تعهدات پرداخت شرکت نفتانیر'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
     
 
 #testing    

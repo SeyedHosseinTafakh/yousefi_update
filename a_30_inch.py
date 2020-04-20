@@ -22,7 +22,9 @@ from PyPDF2 import PdfFileMerger
 
 
 
-def make_30_pdf():    
+def make_30_pdf(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     URL = 'http://api.daricbot.ir/pipeLinesF?inch36=1'
     r = requests.get(url = URL) 
     data = dict(r.json())
@@ -102,7 +104,7 @@ def make_30_pdf():
     headers = ['ردیف','جمع ریالی','مبلغ ورق','جمع ارزی','ضخامت','سایز لوله','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی']
     headers2=['هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
     
-    header_contents = ['گزارش تراز مالی-لوله های 30', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش تراز مالی-لوله های 30', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)
@@ -121,7 +123,7 @@ def make_30_pdf():
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
     onvan='ازمالی –نتایج کلی –لوله های 36اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
 
 

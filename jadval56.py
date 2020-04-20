@@ -14,7 +14,9 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_jadval_56():
+def make_jadval_56(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     URL = 'http://api.daricbot.ir/jadval56'
     
     r = requests.get(url = URL)
@@ -44,7 +46,7 @@ def make_jadval_56():
     output2 = x.values.tolist()
     html_data = open_html()
     headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','جریمه','کل مطالبات']
-    header_contents = ['گزارش جدول لوله های 56 اینچ',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش جدول لوله های 56 اینچ',shomare_ghest,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
@@ -54,13 +56,13 @@ def make_jadval_56():
     file_name ='jadval56___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –لوله های 56اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
 #    combine_pdfs(pdf_names,file_name)
     return True
 
 
-#make_jadval_56()
+#make_jadval_56(10)
 
 
 

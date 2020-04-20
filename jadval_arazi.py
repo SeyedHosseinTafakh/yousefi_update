@@ -15,7 +15,8 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def jadval_arazi_pdf():
+def jadval_arazi_pdf(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
 
     URL = 'http://api.daricbot.ir/jadvalArazi'
     data = requests.get(url = URL)
@@ -37,7 +38,7 @@ def jadval_arazi_pdf():
     
     output = data.values.tolist()
     headers = ['ردیف','شرح','تاریخ','تعهد به پرداخت','پرداخت شده دوره قبل','جمع کل باقی مانده '+'ماه قبل و جریمه مربوطه','جمع کل مطالبات']
-    header_contents = ['گزارش تحصیل اراضی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش تحصیل اراضی', shomare_ghest , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)
@@ -50,12 +51,12 @@ def jadval_arazi_pdf():
     file_name ='tahsil_arazi_30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –تحصیل اراضی'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
     return True
 
 
-#jadval_arazi_pdf()
+#jadval_arazi_pdf(1)
 
 
 

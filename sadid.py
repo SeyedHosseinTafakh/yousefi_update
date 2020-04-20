@@ -17,7 +17,9 @@ from PyPDF2 import PdfFileMerger
 
 
 
-def make_sadid_mahshar():
+def make_sadid_mahshar(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     #URL = 'http://api.daricbot.ir/pardakht_shode_tavasote_naftanir_TM'
     #data = requests.get(url = URL)
     #data = data.json()
@@ -29,7 +31,7 @@ def make_sadid_mahshar():
     spans[0] = enToFarsiPandas2(spans[0])
     spans[1] = enToFarsiPandas2(spans[1])
     spans[2] = enToFarsiPandas2(spans[2])
-    header_contents = ['پیش پرداخت لوله های سدید ماهشهر' , '', JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['پیش پرداخت لوله های سدید ماهشهر' , shomare_ghest, JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     html = open_html()
     html = add_div_and_seprator_for_info(html)
@@ -44,7 +46,7 @@ def make_sadid_mahshar():
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     #onvan='پیش پرداخت سدید ماهشهر'
     onvan = 'ترازمالی – لوله های سدید ماهشهر'
-    combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number='')
+    combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number=shomare_ghest)
 
 
 #make_sadid_mahshar()

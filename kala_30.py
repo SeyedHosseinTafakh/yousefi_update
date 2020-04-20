@@ -17,7 +17,9 @@ from PyPDF2 import PdfFileMerger
 
 
     
-def make_kala_30():
+def make_kala_30(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     URL = 'http://api.daricbot.ir/kala_30'
     data = requests.get(url = URL)
     data = data.json()
@@ -44,7 +46,7 @@ def make_kala_30():
     spans[4]=enToFarsiPandas((add_commas(spans[4])))
     
     
-    header_contents = ['کالاهای 30 اینچ' , '', JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['کالاهای 30 اینچ' , shomare_ghest, JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     html = open_html()
     html = add_div_and_seprator_for_info(html)
@@ -59,7 +61,7 @@ def make_kala_30():
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     #onvan='پیش پرداخت سدید ماهشهر'
     onvan = 'ترازمالی – لوله های سدید ماهشهر'
-    combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number='')
+    combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number=shomare_ghest)
     
 
 #make_kala_30()

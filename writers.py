@@ -178,8 +178,6 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
         pdf = pdf
         
         merger.append(open(pdf,'rb'),import_bookmarks=False)
-    merger.write(path+'/pdfs/'+result_name)
-    merger.close()
     csv_data=[]    
     csv_data.append(tarikh)
     csv_data.append(ghest_number)
@@ -189,11 +187,17 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     csv.columns=range(0,4)
     csv_old = pd.read_csv('data.csv')
     csv_old.columns=range(0,4)
-    dates = csv_old[0]
-    #if not tarikh in dates.tolist() and not onvan in csv_old[2].tolist():
-    csv_old = pd.concat([csv_old,csv],axis=0)
-    csv_old.to_csv('data.csv',index=False)
+    ghest_numbers = csv_old[1]
+    
+    searched_data = csv_old[(csv_old[1]==ghest_number) & (csv_old[2]==onvan)]
+    if len(searched_data) <= 0:    
+        merger.write(path+'/pdfs/'+result_name)    
+        csv_old = pd.concat([csv_old,csv],axis=0)
+        csv_old.to_csv('data.csv',index=False)
+        return False
+    merger.close()
     delete_pdf_files()
+    return True
 
 def listToString(s):
     str1 = ""

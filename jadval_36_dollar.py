@@ -14,7 +14,9 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
     
-def make_jadval_36_dollar():
+def make_jadval_36_dollar(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+    
     URL = 'http://api.daricbot.ir/jadval36_dollar'
     
     r = requests.get(url = URL)
@@ -43,10 +45,10 @@ def make_jadval_36_dollar():
     sum_last_row.append('کل')
     sum_last_row.append(' ')
     sum_last_row.append(' ')
-    sum_last_row.append(enToFarsiPandas2(x[3].astype(float).sum().astype(str)))
+    sum_last_row.append(enToFarsiPandas(truncate_str(add_commas(x[3].astype(float).sum()))))
     sum_last_row.append(' ')
     sum_last_row.append(' ')
-    sum_last_row.append(enToFarsiPandas2(x[4].astype(float).sum().astype(str)))
+    sum_last_row.append(enToFarsiPandas(truncate_str(add_commas(x[4].astype(float).sum()))))
     sum_last_row = pd.DataFrame([sum_last_row])
     
     
@@ -54,12 +56,12 @@ def make_jadval_36_dollar():
     x[0]=x[0].astype(str).apply(enToFarsiPandas2)
     
     x[2]=x[2].astype(str).apply(enToFarsiPandas2)
-    x[3]=x[3].astype(float).abs().astype(str).apply(enToFarsiPandas)
-    x[4]=x[4].astype(float).abs().astype(str).apply(enToFarsiPandas)
+    x[3]=x[3].astype(float).abs().apply(add_commas).apply(truncate_str).apply(enToFarsiPandas)
+    x[4]=x[4].astype(float).abs().apply(add_commas).apply(truncate_str).apply(enToFarsiPandas)
     
-    x[5]=x[5].astype(float).abs().astype(str).apply(enToFarsiPandas)
+    x[5]=x[5].astype(float).abs().apply(add_commas).apply(truncate_str).apply(enToFarsiPandas)
     
-    x[6]=x[6].astype(float).abs().astype(str).apply(enToFarsiPandas)
+    x[6]=x[6].astype(float).abs().apply(add_commas).apply(truncate_str).apply(enToFarsiPandas)
     
     x = pd.concat([x,sum_last_row])
     
@@ -68,7 +70,7 @@ def make_jadval_36_dollar():
     output2 = x.values.tolist()
     html_data = open_html()
     headers=['ردیف','شرح','تاریخ','مبلغ','پرداخت نشده دوره قبل','کل مطالبات','جریمه']
-    #header_contents = ['گزارش جدول لوله های 30 اینچ',' ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش جدول لوله های 30 اینچ',shomare_ghest,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
@@ -78,11 +80,11 @@ def make_jadval_36_dollar():
     file_name ='jadval30___dollar_'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –لوله های 36اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
-    
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
+
     return True
 
 
 
-#make_jadval_36_dollar()
+#make_jadval_36_dollar(10)
 

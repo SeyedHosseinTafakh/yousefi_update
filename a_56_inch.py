@@ -14,7 +14,7 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_56_pdf():
+def make_56_pdf(id_ghest):
 
     URL = 'https://api.daricbot.ir/pipeLinesF'
     r = requests.get(url = URL) 
@@ -98,32 +98,33 @@ def make_56_pdf():
     
     headers = ['ردیف','جمع ریالی','جمع ارزی','مبلغ ورق','جمع دلاری ساخت و پوشش','ضخامت','متراژ','تناژ','تاریخ تحویل','نوع کالای تحویلی','شماره حواله انبار','شماره تقاضا','شماره قلم','نرخ تسعیر بانک مرکزی']
     headers2=['هزینه انبارداری','هزینه صدور بیمه نامه','عوارض گمرکی','هزینه ساخت لوله','هزینه پوشش','مالیات ارزش افزوده و سایر خدمات (ورق)','مالیات ارزش افزوده و سایر خدمات (ساخت و پوشش)']
-    
-    header_contents = ['گزارش تراز مالی لوله های 56', '' ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
+    header_contents = ['گزارش تراز مالی لوله های 56', shomare_ghest ,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)
     html_data = add_headers(html_data , headers)
-    html_data = add_content(html_data , output1)
+    html_data = add_content(html_data , output1,first_page_row_numbers=21)
     page_names = add_page_counters(html_data)
     
     
     html_data = open_html()
     html_data = add_header_document(html_data , header_contents)
     html_data = add_headers(html_data , headers2)
-    html_data = add_content(html_data , output2)
+    html_data = add_content(html_data , output2,first_page_row_numbers=21)
     page_names += add_page_counters(html_data,slider='/1')
     
     file_name ='taraz_mali_56___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='ترازمالی –نتایج کلی –لوله های 56اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    onvan='ترازمالی –لوله های 56اینچ'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
 
 
     return True
 
-#make_56_pdf()
+#make_56_pdf(10)
 
 

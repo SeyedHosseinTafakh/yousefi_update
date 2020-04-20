@@ -9,8 +9,10 @@ import numpy as np
 from PyPDF2 import PdfFileMerger
 
 
-def make_peymankaran_pdf():
-    header = ['گزارش پیمانکاران','  ',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+def make_peymankaran_pdf(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
+    header = ['گزارش پیمانکاران',shomare_ghest,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     URL = 'https://api.daricbot.ir/peymankaran'
     r = requests.get(url = URL)
     data = r.json()
@@ -53,7 +55,7 @@ def make_peymankaran_pdf():
     file_name ='peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     onvan = 'گزارش پیمانکاران'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number='',tarikh =tarikh )
+    combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number=shomare_ghest,tarikh =tarikh )
     return True    
 
 
@@ -61,7 +63,7 @@ def make_peymankaran_pdf():
 #make_peymankaran_pdf('peymankaran.pdf',{'right':'گذارش پیمانکاران', 'middle':' ' , 'left':'اسفند 1398'})
 
 
-#make_peymankaran_pdf()
+#make_peymankaran_pdf(10)
 
 
 

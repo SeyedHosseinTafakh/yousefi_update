@@ -85,7 +85,8 @@ def get_arazi_d():
     return ([0,0,0])
 
 
-def make_natayej_koli_d():
+def make_natayej_koli_d(id_ghest):
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
         
     x=[]
     x.append(get_peymankaran_d())
@@ -117,7 +118,7 @@ def make_natayej_koli_d():
     
     output = x.values.tolist()
     headers = ['ردیف','شرح','اصل مطالبات','جریمه ها','کل مطالبات']
-    header_contents = ['گزارش نتایج نهایی', ' ' , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_contents = ['گزارش نتایج نهایی', shomare_ghest , JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     html_data = open_html()
     
     html_data = add_header_document(html_data , header_contents)
@@ -132,7 +133,7 @@ def make_natayej_koli_d():
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan=' ترازمالی –نتایج کلی –نتایج کلی دلاری'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
 
 
     return True

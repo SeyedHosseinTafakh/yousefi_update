@@ -119,7 +119,7 @@ def make_56_pdf(id_ghest):
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –لوله های 56اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
 

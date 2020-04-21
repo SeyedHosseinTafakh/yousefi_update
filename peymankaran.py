@@ -53,9 +53,9 @@ def make_peymankaran_pdf(id_ghest):
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
-    onvan = 'گزارش پیمانکاران'
+    onvan = 'تراز مالی - نتایج - گزارش پیمانکاران'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number=shomare_ghest,tarikh =tarikh )
+    combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number=id_ghest,tarikh =tarikh )
     return True    
 
 

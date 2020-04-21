@@ -72,6 +72,7 @@ def index():
 #------------------------------------------peymankaran
 @app.route('/SendData', methods=['POST'])
 def peymankaran():
+    first = get_data_cumber()
     if not request.is_json:
         return 'error just json format'
     args = request.get_json()
@@ -117,7 +118,9 @@ def peymankaran():
             return 'error : id_gosrare required'
         make_tahodat_naftanir_pdf(args['id_ghest'])
     if args['type']=='natayej_koli':
-        make_natayej_koli()
+        if not 'id_ghest' in args:
+            return 'error : id_gosrare required'
+        make_natayej_koli(args['id_ghest'])
     if args['type']=='56_inch':
         if not 'id_ghest' in args:
             return 'error : id_ghest required'
@@ -172,8 +175,11 @@ def peymankaran():
         if not 'id_ghest' in args:
             return 'error: id_ghest required'
         make_kala_30(args['id_ghest'])
-    return "OK"
-
+    last = get_data_cumber()
+    if last > first:
+        return "OK"
+    else:
+        return "exists"
 
 
 app.run(port=50000)

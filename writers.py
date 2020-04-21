@@ -189,11 +189,13 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     csv_old.columns=range(0,4)
     ghest_numbers = csv_old[1]
     
-    searched_data = csv_old[(csv_old[1]==ghest_number) & (csv_old[2]==onvan)]
+    searched_data = csv_old[(csv_old[1]==int(ghest_number)) & (csv_old[2]==onvan)]
     if len(searched_data) <= 0:    
         merger.write(path+'/pdfs/'+result_name)    
         csv_old = pd.concat([csv_old,csv],axis=0)
         csv_old.to_csv('data.csv',index=False)
+        delete_pdf_files()
+
         return False
     merger.close()
     delete_pdf_files()
@@ -404,3 +406,10 @@ def delete_pdf_files():
             deleter(file)
         except:
             pass
+
+
+def get_data_cumber():
+    data_frame = pd.read_csv('data.csv')
+    return len(data_frame)
+
+

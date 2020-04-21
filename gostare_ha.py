@@ -62,11 +62,11 @@ def make_gostare_pdf(id_ghest , id_gostare):
     page_names = add_page_counters(html)
     
     pdf_names = make_pdfs(page_names,css_path='temp/style_a4_2_Copy.css',options='a4')
-    file_name ='gostare_ha___'+id_gostare+'__'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
+    file_name ='gostare_ha___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
         
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
-    onvan='گزارش گستره'+' '+enToFarsiPandas(spans[0])
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    onvan='گزارش گستره'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
     return True
 
 

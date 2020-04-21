@@ -15,11 +15,12 @@ from PyPDF2 import PdfFileMerger
 
 
 
-def make_torbocompresssor_pdf():
+def make_torbocompresssor_pdf(id_ghest):
     URL = 'http://api.daricbot.ir/comperosor'
     data = requests.get(url = URL)
     data = data.json()
-    
+    shomare_ghest = 'شماره قسط'+enToFarsiPandas2(str(id_ghest))
+
     x=[]
     for d in data:
         x.append(data[d]['dataBase'])
@@ -48,7 +49,7 @@ def make_torbocompresssor_pdf():
     df[8] = df[8].astype(str).apply(enToFarsiPandas2)
     
     header = ['ردیف','نام ایستگاه','نوع توربین','مبلغ مآزاد - دلار','مبلغ مآزاد - یورو','تاریخ شروع تحویل','تاریخ پرداخت','توضیحات']
-    header_content = ['توربو کمپرسور ها','',JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
+    header_content = ['توربو کمپرسور ها',shomare_ghest,JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')]
     
     
     
@@ -66,8 +67,8 @@ def make_torbocompresssor_pdf():
     
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گزارش توربو کمپرسور ها'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number='',onvan=onvan,tarikh=tarikh)
+    onvan='تراز مالی - نتایج - توربو کمپرسورها'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
     return True
 

@@ -78,8 +78,8 @@ def make_jadval_36(id_ghest):
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='jadval30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    onvan='گزارش جدول لوله های 30 اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
+    onvan='ترازمالی –نتایج کلی –لوله های 30اینچ'
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
     return True
 

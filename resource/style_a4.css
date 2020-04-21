@@ -15,7 +15,7 @@
 .table th>span, .table td>span{
     background-color: #f2f2f2;
     border: 2px solid #fff;
-    padding: 10px;
+    padding: 2px;
     display: block;
     border-radius: 8px !important;
 }
@@ -40,9 +40,10 @@
 .table.modelmali th{
     font-weight: inherit;
 }
+/*
 .table tbody tr td i{
     display: none;
-    width: 100%;
+    width: 80%;
     position: absolute;
     bottom: calc(100% - 2px);
     left: 0;
@@ -53,8 +54,9 @@
     opacity: 0.96;
     color: #fff;
     z-index: 9999;
-}
+}*/
 
+/*
 .table tbody tr td i:before{
     content: "";
     position: absolute;
@@ -68,10 +70,12 @@
     border-top: 6px solid rgb(251, 192, 14);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-}
-.table.popup tbody tr td:hover i{
+}*/
+
+/*.table.popup tbody tr td:hover i{
     display: block;
 }
+*/
 .table thead th>span{
     background-color: #b5b5b5;
     direction: rtl;
@@ -80,30 +84,28 @@
     background-color: #d8d8d8;
 }
 
-
+.table {
+    margin-left: 0.75in;
+}
 
 table{
     border-collapse: separate;
     z-index: 1;
     position: relative;
-    /*margin-top: 0.45in;*/
-    /*margin-right: 0.75in;*/
-    /*padding-left: 0.75in;*/
-    /*background: white;*/
-    /*margin-left: 0.75in;*/
-    /*width: 10in;*/
-
+    /*display: block;*/
+    width: 100px;
 }
 
 
 html{
+    width: 1080px;
     background-image:  url('https://i.ibb.co/tPW2Yhj/a.jpg') !important; 
     height: 100%;
     background-repeat: repeat-y;
     background-size: cover;
     background-position: center;
-	background-attachment: scroll;
-	background-size: 100%;
+    background-attachment: scroll;
+    background-size: 100%;
 
 }
 
@@ -124,27 +126,29 @@ html{
     /*background: white;*/
     /*margin-left: 0.75in;*/
     /*margin-right: 0.75in;*/
-
 }
 
 .white_background{
-	margin-top: 0.20in;
-    border-radius: 8px;
-    background-color: #fff;
+    /*position: absolute;*/
+    background: #fff;
+    width: 85%;
+    /*height: 1065px;*/
+    height: 870px;
+    border-radius: 8px !important;
     margin-right: 0.5in;
-    width: 95.5%;
+    margin-top: 0.5in;
 }
 
 
 
 .page-counter{
-	/*position: absolute;*/
-	background: grey;
-	border-radius: 8px !important;
-	/*width: 1880px;*/
-	height: 70px;
-	margin-right: 0.5in;
-	/*margin-top: 1150px;*/
+    /*position: absolute;*/
+    background: grey;
+    border-radius: 8px !important;
+    /*width: 1880px;*/
+    height: 70px;
+    margin-right: 0.5in;
+    /*margin-top: 1150px;*/
 }
 
 .col-container2 {
@@ -194,3 +198,10 @@ img {
     display: table-cell;
     max-width: 80%;
 }
+
+
+
+tr{
+
+}
+

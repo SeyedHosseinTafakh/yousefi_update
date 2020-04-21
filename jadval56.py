@@ -56,7 +56,7 @@ def make_jadval_56(id_ghest):
     file_name ='jadval56___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –لوله های 56اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
+    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 #    combine_pdfs(pdf_names,file_name)
     return True

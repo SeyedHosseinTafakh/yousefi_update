@@ -196,10 +196,10 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
         csv_old.to_csv('data.csv',index=False)
         delete_pdf_files()
 
-        return False
+        return True
     merger.close()
     delete_pdf_files()
-    return True
+    return False
 
 def listToString(s):
     str1 = ""
@@ -331,7 +331,7 @@ def add_labels(html, labels):
 def add_spans(html , spans):
     data = ['<div class="spans">\n']
     for span in spans:
-        data.append('<h5 style=" direction: ltr;">'+span+'</h5> \n')
+        data.append('<h4 style=" direction: ltr;">'+span+'</h4> \n')
     data= listToString(data)
     data +='</div>'
     html = html.replace('<!-- span_place_holder -->',data)

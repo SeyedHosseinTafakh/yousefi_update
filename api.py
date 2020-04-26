@@ -39,6 +39,10 @@ from jadval_36_dollar import *
 from jaraem_takhir_dar_pardakht import *
 from sadid import *
 from kala_30 import *
+
+from mohasebe_aghsat import *
+
+
 app = flask.Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
@@ -175,6 +179,10 @@ def peymankaran():
         if not 'id_ghest' in args:
             return 'error: id_ghest required'
         make_kala_30(args['id_ghest'])
+    if args['type']=='mohasebe_aghsat':
+        if not 'id_ghest' in args:
+            return 'error: id_ghest required'
+        make_mohosabe_aghsta_pdf(args['id_ghest'])
     last = get_data_cumber()
     if last > first:
         return "OK"

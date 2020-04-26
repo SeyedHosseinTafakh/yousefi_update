@@ -44,12 +44,12 @@ def make_peymankaran_pdf(id_ghest):
     
     output2 = sum_last_row.values.tolist()
     html_data = open_html()
-    headers=['ردیف','نام پیمانکار','تاریخ چک','شماره چک','مبلغ چک','توضیحات']
+    headers=['ردیف','نام پیمانکار','شماره چک','مبلغ چک','تاریخ چک','توضیحات']
     header_contents = header
     html_data = add_header_document(html_data , header_contents)
     
     html_data = add_headers(html_data , headers)
-    page_names = add_content(html_data , output2,first_page_row_numbers=34,second_page_numbers=35)
+    page_names = add_content(html_data , output2,first_page_row_numbers=32,second_page_numbers=35)
     pdf_names = add_page_counters(page_names)
     pdf_names = make_pdfs(page_names,'a4','temp/style_a4_2.css')
     file_name ='peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'

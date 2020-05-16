@@ -106,11 +106,10 @@ def make_pishraft_fiziki_pdf(id_ghest):
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
 
     onvan='پیشرفت فیزیکی'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
     
     
-    return True
 
 
 #make_pishraft_fiziki_pdf(16)

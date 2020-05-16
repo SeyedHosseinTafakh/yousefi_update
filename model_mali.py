@@ -262,8 +262,7 @@ def make_model_mali_pdf(id_ghest):
     
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
     onvan='گزارش مدل مالی'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
-    return True
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
 

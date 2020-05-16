@@ -61,7 +61,7 @@ def make_kala_30(id_ghest):
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     #onvan='پیش پرداخت سدید ماهشهر'
     onvan = 'ترازمالی – لوله های سدید ماهشهر'
-    combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number=id_ghest)
+    return combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number=id_ghest)
     
 
 #make_kala_30()

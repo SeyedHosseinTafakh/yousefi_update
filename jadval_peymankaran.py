@@ -79,8 +79,7 @@ def make_jadval_peymankaran(id_ghest):
     file_name ='jadval_peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     onvan = '  ترازمالی –نتایج کلی –پیمانکاران'
     tarikh = tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    combine_pdfs(pdf_names,file_name,ghest_number=id_ghest,tarikh=tarikh , onvan=onvan)
-    return True
+    return combine_pdfs(pdf_names,file_name,ghest_number=id_ghest,tarikh=tarikh , onvan=onvan)
 
 
 

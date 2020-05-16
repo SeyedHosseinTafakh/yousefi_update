@@ -25,6 +25,16 @@ from khayyam import *
 from datetime import date
 JalaliDatetime(989, 3, 25, 10, 43, 23, 345453)
 
+import mysql.connector
+import pandas as pd
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="gas",
+)
+mycursor = mydb.cursor()
 #repository
 #df.append(pandas.Series(), ignore_index=True)
 
@@ -178,28 +188,40 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
         pdf = pdf
         
         merger.append(open(pdf,'rb'),import_bookmarks=False)
-    csv_data=[]    
-    csv_data.append(tarikh)
-    csv_data.append(ghest_number)
-    csv_data.append(onvan)
-    csv_data.append(result_name)
-    csv = pd.DataFrame(csv_data).T
-    csv.columns=range(0,4)
-    csv_old = pd.read_csv('data.csv')
-    csv_old.columns=range(0,4)
-    ghest_numbers = csv_old[1]
-    
-    searched_data = csv_old[(csv_old[1]==int(ghest_number)) & (csv_old[2]==onvan)]
-    if len(searched_data) <= 0:    
+    #csv_data=[]    
+    #csv_data.append(tarikh)
+    #csv_data.append(ghest_number)
+    #csv_data.append(onvan)
+    #csv_data.append(result_name)
+    #csv = pd.DataFrame(csv_data).T
+    #csv.columns=range(0,4)
+    #csv_old = pd.read_csv('data.csv')
+    #csv_old.columns=range(0,4)
+    #ghest_numbers = csv_old[1]
+    tarikh = '0'
+    result_name = '0'
+    ghest_number = '0'
+    onvan = 'onvan'
+    #searched_data = csv_old[(csv_old[1]==int(ghest_number)) & (csv_old[2]==onvan)]
+    mycursor.execute('select * from pdf_names where title = %s and id_ghest = %s',(onvan , ghest_number))
+    x = mycursor.fetchall()
+
+    if len(x) > 0:    
         merger.write(path+'/pdfs/'+result_name)    
-        csv_old = pd.concat([csv_old,csv],axis=0)
-        csv_old.to_csv('data.csv',index=False)
+        #csv_old = pd.concat([csv_old,csv],axis=0)
+        #csv_old.to_csv('data.csv',index=False)
+        tarikh = '0'
+        result_name = '0'
+        ghest_number = '0'
+        onvan = 'onvan'
+        mycursor.execute("insert into pdf_names (date , id_ghest , title , name) values (%s , %s ,%s , %s)",[tarikh , ghest_number , onvan , result_name])
+        mydb.commit()
         delete_pdf_files()
 
-        return True
+        return "OK"
     merger.close()
     delete_pdf_files()
-    return False
+    return "exists"
 
 def listToString(s):
     str1 = ""

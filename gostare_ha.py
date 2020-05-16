@@ -66,8 +66,7 @@ def make_gostare_pdf(id_ghest , id_gostare):
         
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
     onvan='گزارش گستره'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
-    return True
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
 

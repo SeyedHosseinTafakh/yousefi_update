@@ -76,10 +76,9 @@ def make_jaraem_takhir_dar_bahre_bardari(id_ghest):
     file_name='jaraem_takhir_dar_bahre_bardari____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='جرائم تاخیر در بهره برداری'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
     
-    return True
 
 #make_jaraem_takhir_dar_bahre_bardari(str(16))
 

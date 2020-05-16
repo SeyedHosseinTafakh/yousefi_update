@@ -80,9 +80,8 @@ def make_jadval_36_dollar(id_ghest):
     file_name ='jadval30___dollar_'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –لوله های 36اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
-    return True
 
 
 

@@ -123,7 +123,7 @@ def make_30_pdf(id_ghest):
     pdf_names = make_pdfs(page_names,css_path='resource/style.css',options='a3')
     tarikh=JalaliDatetime.now().strftime('%B')+'  '  + JalaliDatetime.now().strftime('%Y')
     onvan='ازمالی –نتایج کلی –لوله های 36اینچ'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
 

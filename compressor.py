@@ -68,9 +68,8 @@ def make_torbocompresssor_pdf(id_ghest):
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='تراز مالی - نتایج - توربو کمپرسورها'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
-    return True
 
 
 

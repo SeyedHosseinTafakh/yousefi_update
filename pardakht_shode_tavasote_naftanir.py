@@ -88,11 +88,11 @@ def make_pardakht_shode_tavasote_naftanir(id_ghest):
         
         pdf_names = make_pdfs(page_names,options='a5',css_path='resource/style_pardakh_shode_tavasote_naftanir.css')
         pdf_names = first_pdf_name + pdf_names
-        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+        return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
     
     else:
         del(pdf_names[0])
-        combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+        return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
     
 
 

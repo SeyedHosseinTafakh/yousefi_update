@@ -133,10 +133,9 @@ def make_natayej_koli_d(id_ghest):
     
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan=' ترازمالی –نتایج کلی –نتایج کلی دلاری'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
-    return True
 
 #make_natayej_koli_d()
 

@@ -55,8 +55,7 @@ def make_peymankaran_pdf(id_ghest):
     file_name ='peymankaran___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     onvan = 'تراز مالی - نتایج - گزارش پیمانکاران'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
-    combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number=id_ghest,tarikh =tarikh )
-    return True    
+    return combine_pdfs(pdf_names,file_name,onvan=onvan,ghest_number=id_ghest,tarikh =tarikh )
 
 
 #testingnkaran_pdf('peymankaran.pdf',{'right':'گﺫﺍﺮﺷ پیﻡﺎﻧکﺍﺭﺎﻧ', 'middle':' ' , 'left':'ﺎﺴﻔﻧﺩ 1398'})

@@ -49,7 +49,7 @@ def make_arazi_pdf(id_ghest):
     #combine_pdfs(pdf_names,pdf_name)
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='تراز مالی - نتایج -تحصیل اراضی '
-    combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=pdf_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
 
 #make_arazi_pdf(10)

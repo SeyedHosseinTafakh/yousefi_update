@@ -51,9 +51,8 @@ def jadval_arazi_pdf(id_ghest):
     file_name ='tahsil_arazi_30___'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='ترازمالی –نتایج کلی –تحصیل اراضی'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=id_ghest,onvan=onvan,tarikh=tarikh)
 
-    return True
 
 
 #jadval_arazi_pdf(1)

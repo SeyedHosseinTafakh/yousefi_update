@@ -69,7 +69,7 @@ def make_turobocompressor_pdf(id_ghest):
     file_name='torbo_copmresor____'+JalaliDatetime.now().strftime('%Y-%m-%d')+'.pdf'
     tarikh=JalaliDatetime.now().strftime('%Y/%m/%d')
     onvan='گزارش توربو کمپرسور ها'
-    combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
+    return combine_pdfs(pdfs=pdf_names,result_name=file_name,ghest_number=shomare_ghest,onvan=onvan,tarikh=tarikh)
     
 
 #make_turobocompressor_pdf()

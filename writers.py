@@ -198,22 +198,14 @@ def combine_pdfs(pdfs,result_name,ghest_number,tarikh,onvan):
     #csv_old = pd.read_csv('data.csv')
     #csv_old.columns=range(0,4)
     #ghest_numbers = csv_old[1]
-    tarikh = '0'
-    result_name = '0'
-    ghest_number = '0'
-    onvan = 'onvan'
     #searched_data = csv_old[(csv_old[1]==int(ghest_number)) & (csv_old[2]==onvan)]
     mycursor.execute('select * from pdf_names where title = %s and id_ghest = %s',(onvan , ghest_number))
     x = mycursor.fetchall()
 
-    if len(x) > 0:    
+    if len(x) == 0:    
         merger.write(path+'/pdfs/'+result_name)    
         #csv_old = pd.concat([csv_old,csv],axis=0)
         #csv_old.to_csv('data.csv',index=False)
-        tarikh = '0'
-        result_name = '0'
-        ghest_number = '0'
-        onvan = 'onvan'
         mycursor.execute("insert into pdf_names (date , id_ghest , title , name) values (%s , %s ,%s , %s)",[tarikh , ghest_number , onvan , result_name])
         mydb.commit()
         delete_pdf_files()

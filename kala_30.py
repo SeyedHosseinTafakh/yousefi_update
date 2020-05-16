@@ -63,7 +63,6 @@ def make_kala_30(id_ghest):
     onvan = 'ترازمالی – لوله های سدید ماهشهر'
     return combine_pdfs(first_pdf_name,file_name,onvan = onvan,tarikh=tarikh,ghest_number=id_ghest)
     
-
 #make_kala_30()
 
 
